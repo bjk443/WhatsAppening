@@ -53,6 +53,24 @@ Venue.create!(
   user_id: User.all.ids.sample
 )
 
+Rating.create!(
+  stars: 3.5,
+  comment: "best banging partay ever!",
+  crowd_level: 8
+)
+
+Rating.create!(
+  stars: 5,
+  comment: "can it be better than this?!",
+  crowd_level: 10
+)
+
+Rating.create!(
+  stars: 2,
+  comment: "I should have stayed at home",
+  crowd_level: 3
+)
+
 puts "Attaching pictures..."
 Venue.all.each do |venue|
   names = ["amara-", "royal-", "tonito-"]

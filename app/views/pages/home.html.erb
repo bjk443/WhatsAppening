@@ -38,42 +38,46 @@
 <!-- container end, apply border-radius to bottom onl -->
 </div>
 <!-- filter tabs -->
-<div class="filter-tabs">
-  <ul class="list-inline tabs-underlined">
-    <li>
-      <a href="#" class="tab-underlined active">Popular</a>
-    </li>
-    <li>
-      <a href="#" class="tab-underlined">Recommended</a>
-    </li>
-    <li>
-      <a href="#" class="tab-underlined">Promotions</a>
-    </li>
-  </ul>
+<div class="container mt-3 tabs-and-event-cards">
+    <div class="filter-tabs">
+    <ul class="list-inline tabs-underlined">
+        <li>
+        <a href="#" class="tab-underlined active">Popular</a>
+        </li>
+        <li>
+        <a href="#" class="tab-underlined">Recommended</a>
+        </li>
+        <li>
+        <a href="#" class="tab-underlined">Promotions</a>
+        </li>
+    </ul>
+    </div>
 
 <!-- cards -->
   <!-- iterate through venue cards with events -->
-<div class="container mt-3 venue-section">
-  <div class="row">
-    <div class="card-trip">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-        <div class="scroll-right-button">
-        <a class="btn btn-flat" href="#">→</a>
-        <div class="card-trip-infos">
-        <div>
-            <h2>Craftsmen Cafe</h2>
-            <p>Best coffee shop</p>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-        </div>
-        <!-- iterate through users who are logged in -->
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    <div class="container mt-3 venue-section">
+        <div class="row">
+          <% @venues.each do |venue|%>
+            <div class="event-card">
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+                  <%= cl_image_tag photo.key, height:220, crop: :fill, class: "w-100" %>
+
+                <div class="card-trip-infos">
+                <h2>Craftsmen Cafe</h2>
+                <p>Best coffee shop</p>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                </div>
+                <!-- iterate through users who are logged in -->
+                <div class="users-online">
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                </div>
+            </div>
         </div>
     </div>
-  </div>
 </div>
 <!--navigation right button -->
 
