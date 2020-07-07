@@ -24,17 +24,6 @@
     </div>
   </div>
 
-  <div class="search-box">
-    <%= simple_form_for :search, url: s_path, method: "GET", html: { class: '' } do |f| %>
-        <div class="search_bar d-flex  align-items-center input_area text-align-center pr-2">
-            <div class="name flex-grow-1">
-            <%= f.input :name, input_html: {value: ""}, :placeholder => "search" , :label => false, input_html: { class: 'name_input mt-3' } %>
-            </div>
-            <%= f.submit "🔎", class: "search_bar_btn ml-3" %>
-        </div>
-    <% end %>
-  </div>
-
 <!-- container end, apply border-radius to bottom onl -->
 </div>
 <!-- filter tabs -->
@@ -42,10 +31,10 @@
     <div class="filter-tabs">
     <ul class="list-inline tabs-underlined">
         <li>
-        <a href="#" class="tab-underlined active">Popular</a>
+        <a href="#" class="tab-underlined active">Venues</a>
         </li>
         <li>
-        <a href="#" class="tab-underlined">Recommended</a>
+        <a href="#" class="tab-underlined">Events</a>
         </li>
         <li>
         <a href="#" class="tab-underlined">Promotions</a>
