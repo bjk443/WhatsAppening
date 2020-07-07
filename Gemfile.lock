@@ -99,6 +99,7 @@ GEM
     faker (2.13.0)
       i18n (>= 1.6, < 2)
     ffi (1.13.1)
+    flatpickr (4.6.3.1)
     font-awesome-sass (5.13.0)
       sassc (>= 1.11)
     geocoder (1.6.3)
@@ -150,6 +151,8 @@ GEM
     public_suffix (4.0.5)
     puma (4.3.5)
       nio4r (~> 2.0)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -263,7 +266,6 @@ DEPENDENCIES
   cloudinary (~> 1.12.0)
   devise
   dotenv-rails
-  faker
   font-awesome-sass
   geocoder
   jbuilder (~> 2.7)
@@ -273,6 +275,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma (~> 4.1)
+  pundit
   rails (~> 6.0.3, >= 6.0.3.2)
   redis (~> 4.0)
   sass-rails (>= 6)

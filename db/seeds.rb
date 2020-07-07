@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
+Rating.destroy_all
+Event.destroy_all
 Venue.destroy_all
 User.destroy_all
 
@@ -53,7 +55,43 @@ Venue.create!(
   user_id: User.all.ids.sample
 )
 
-puts "Attaching pictures..."
+puts "Creating events..."
+
+Event.create!(
+  name: "The Greatest Show on Earth",
+  category: "circus",
+  venue_id: Venue.all.ids.sample
+)
+
+Event.create!(
+  name: "The end of days",
+  category: "religious",
+  venue_id: Venue.all.ids.sample
+)
+
+puts "Creating ratings..."
+Rating.create!(
+  stars: 3.5,
+  comment: "Did you hear that DJ?",
+  crowd_level: 6,
+  event_id: Event.all.ids.sample
+)
+
+Rating.create!(
+  stars: 5,
+  comment: "A night to remember!",
+  crowd_level: 10,
+  event_id: Event.all.ids.sample
+)
+
+Rating.create!(
+  stars: 1,
+  comment: "What a waste of my time!",
+  crowd_level: 3,
+  event_id: Event.all.ids.sample
+)
+
+puts "Attaching pictures for venues..."
 Venue.all.each do |venue|
   names = ["amara-", "royal-", "tonito-"]
   house = names.sample
@@ -63,5 +101,6 @@ Venue.all.each do |venue|
       venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
     end
 end
+
 
 
