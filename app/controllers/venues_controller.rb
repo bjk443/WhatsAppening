@@ -56,5 +56,4 @@ class VenuesController < ApplicationController
       redirect_to root_path, alert: "You got no permission to edit the page"
     end
   end
-
 end

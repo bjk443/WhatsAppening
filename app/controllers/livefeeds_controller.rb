@@ -1,0 +1,2 @@
+class LivefeedsController < ApplicationController
+end
