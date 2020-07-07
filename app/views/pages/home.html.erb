@@ -1,6 +1,7 @@
 
 <!-- container for orange background -->
-<div container>
+
+<div header-container>
 <!-- navigation bar -->
 
 <!-- avatar -->
@@ -23,15 +24,6 @@
       <a class="dropdown-item" href="#">Another </a>
     </div>
   </div>
-
-  <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-  <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-search"></i> Search
-    </button>
-  </div>
-  </form>
 
 <!-- container end, apply border-radius to bottom onl -->
 </div>
@@ -70,4 +62,50 @@
     </div>
   </div>
 <!--navigation right button -->
+=======
+<!-- container end, apply border-radius to bottom onl -->
+</div>
+<!-- filter tabs -->
+<div class="container mt-3 tabs-and-event-cards">
+    <div class="filter-tabs">
+    <ul class="list-inline tabs-underlined">
+        <li>
+        <a href="#" class="tab-underlined active">Venues</a>
+        </li>
+        <li>
+        <a href="#" class="tab-underlined">Events</a>
+        </li>
+        <li>
+        <a href="#" class="tab-underlined">Promotions</a>
+        </li>
+    </ul>
+    </div>
+
+<!-- cards -->
+  <!-- iterate through venue cards with events -->
+    <div class="container mt-3 venue-section">
+        <div class="row">
+          <% @venues.each do |venue|%>
+            <div class="event-card">
+                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+                <div class="card-trip-infos">
+                <h2><%= venue.events.first.name %></h2>
+                <h3><%= venue.name %></h3>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                </div>
+                <!-- iterate through users who are logged in -->
+                <div class="users-online">
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+</div>
+<!--stars, in ratings controller add methods to calculate/round full,empty stars from the ratings of the user -->
+<!-- avatar, in livefeed controller add method to get users currently live, iterate and call .each on them in view  -->
 
