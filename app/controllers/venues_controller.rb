@@ -46,11 +46,6 @@ class VenuesController < ApplicationController
     # redirect_to account_my_listings_path
   end
 
-  def search
-    @user_search = params[:search][:address]
-    @search_venues = Venue.search_by_name_and_address(@user_search)
-  end
-
   private
 
   def venue_params
