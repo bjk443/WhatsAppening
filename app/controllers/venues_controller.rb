@@ -3,14 +3,12 @@ class VenuesController < ApplicationController
   before_action :check_owner, only: [:edit]
 
   def index
-    @venues = Venue.all
-    if params[:search][:address].present?
-    # raise
-      @venues = Venue.search_by_name_and_address(params[:search][:address])
-    elsif params[:search][:address].blank?
+    search_query = params.dig(:search, :address)
+    if search_query.nil? || search_query.empty?
       @venues = Venue.all
+    else
+      @venues = Venue.search_by_name_and_address(search_query)
     end
-
   end
 
 
