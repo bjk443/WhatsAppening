@@ -59,12 +59,10 @@
         <div class="row">
           <% @venues.each do |venue|%>
             <div class="event-card">
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-                  <%= cl_image_tag photo.key, height:220, crop: :fill, class: "w-100" %>
-
+                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
                 <div class="card-trip-infos">
-                <h2>Craftsmen Cafe</h2>
-                <p>Best coffee shop</p>
+                <h2><%= venue.events.first.name %></h2>
+                <h3><%= venue.name %></h3>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -76,8 +74,10 @@
                 <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
                 </div>
             </div>
+          <% end %>
         </div>
     </div>
 </div>
-<!--navigation right button -->
+<!--stars, in ratings controller add methods to calculate/round full,empty stars from the ratings of the user -->
+<!-- avatar, in livefeed controller add method to get users currently live, iterate and call .each on them in view  -->
 
