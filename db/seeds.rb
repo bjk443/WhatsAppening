@@ -24,49 +24,53 @@ Venue.create!(
   address: "214 South Bridge Rd, Singapore 058763",
   description: "Event place, Meeting Room, Studio, Unique",
   capacity: 20,
-  user_id: User.all.ids.sample
+  user_id: User.all.ids.sample,
+  category: "bar"
 )
 Venue.create!(
   name: "The Float@Marina Bay",
   address: "20 Raffles Ave. Singapore 039805",
   description: "Great place in marina bay Singapore",
   capacity: 500,
-  user_id: User.all.ids.sample
+  user_id: User.all.ids.sample,
+  category: "cafe"
 )
 Venue.create!(
-  name: "Cloud9 Events",
+  name: "Amazing Events",
   address: "200 South Bridge Rd, Singapore 058763",
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
   capacity: 100,
-  user_id: User.all.ids.sample
+  user_id: User.all.ids.sample,
+  category: "bar"
 )
 Venue.create!(
   name: "Three Degree Cafe",
   address: "11 Slim Barracks Rise, Singapore 138664",
   description: "Cafe, Event Space, Halal Venue",
   capacity: 100,
-  user_id: User.all.ids.sample
+  user_id: User.all.ids.sample,
+  category: "cafe"
 )
 Venue.create!(
   name: "Cloud9 Events",
   address: "65 Ubi Rd 1, Singapore 408729",
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room",
   capacity: 50,
-  user_id: User.all.ids.sample
+  user_id: User.all.ids.sample,
+  category: "cafe"
 )
 
 puts "Creating events..."
 
 Event.create!(
   name: "The Greatest Show on Earth",
-  category: "circus",
-  venue_id: Venue.all.ids.sample
+  venue_id: Venue.all.ids.sample,
 )
 
 Event.create!(
   name: "The end of days",
-  category: "religious",
-  venue_id: Venue.all.ids.sample
+  venue_id: Venue.all.ids.sample,
+
 )
 
 puts "Creating ratings..."
@@ -74,21 +78,24 @@ Rating.create!(
   stars: 3.5,
   comment: "Did you hear that DJ?",
   crowd_level: 6,
-  event_id: Event.all.ids.sample
+  event_id: Event.all.ids.sample,
+
 )
 
 Rating.create!(
   stars: 5,
   comment: "A night to remember!",
   crowd_level: 10,
-  event_id: Event.all.ids.sample
+  event_id: Event.all.ids.sample,
+
 )
 
 Rating.create!(
   stars: 1,
   comment: "What a waste of my time!",
   crowd_level: 3,
-  event_id: Event.all.ids.sample
+  event_id: Event.all.ids.sample,
+
 )
 
 puts "Attaching pictures for venues..."
