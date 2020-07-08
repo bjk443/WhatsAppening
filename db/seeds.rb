@@ -71,7 +71,7 @@ Event.create!(
 
 puts "Creating ratings..."
 Rating.create!(
-  stars: 3.5,
+  stars: 3,
   comment: "Did you hear that DJ?",
   crowd_level: 6,
   event_id: Event.all.ids.sample
