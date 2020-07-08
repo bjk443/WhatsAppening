@@ -25,6 +25,7 @@ venue_1 = Venue.create!(
   description: "Event place, Meeting Room, Studio, Unique",
   capacity: 20,
   user: user_1
+  category: "bar"
 )
 venue_2 = Venue.create!(
   name: "The Float@Marina Bay",
@@ -39,6 +40,14 @@ venue_3 =Venue.create!(
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
   capacity: 100,
   user: user_3
+  category: "cafe"
+)
+Venue.create!(
+  name: "Amazing Events",
+  address: "200 South Bridge Rd, Singapore 058763",
+  description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
+  capacity: 100,
+  category: "bar"
 )
 venue_4 = Venue.create!(
   name: "Three Degree Cafe",
@@ -46,6 +55,7 @@ venue_4 = Venue.create!(
   description: "Cafe, Event Space, Halal Venue",
   capacity: 100,
   user: user_1
+  category: "cafe"
 )
 venue_5 = Venue.create!(
   name: "Cloud9 Events",
@@ -53,37 +63,34 @@ venue_5 = Venue.create!(
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room",
   capacity: 50,
   user: user_2
+  user_id: User.all.ids.sample,
+  category: "cafe"
 )
 
 puts "Creating events..."
 
 event_1 = Event.create!(
   name: "The Greatest Show on Earth",
-  category: "circus",
   venue: venue_1
 )
 
 event_2 = Event.create!(
   name: "The end of days",
-  category: "religious",
   venue: venue_2
 )
 
 event_3 = Event.create!(
   name: "200m run",
-  category: "athletic",
   venue: venue_3
 )
 
 event_4 = Event.create!(
   name: "Concert",
-  category: "concert",
   venue: venue_4
 )
 
 event_5 = Event.create!(
   name: "Bar fight",
-  category: "bar",
   venue: venue_5
 )
 
