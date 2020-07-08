@@ -24,7 +24,7 @@ venue_1 = Venue.create!(
   address: "214 South Bridge Rd, Singapore 058763",
   description: "Event place, Meeting Room, Studio, Unique",
   capacity: 20,
-  user: user_1
+  user: user_1,
   category: "bar"
 )
 venue_2 = Venue.create!(
@@ -39,7 +39,7 @@ venue_3 =Venue.create!(
   address: "200 South Bridge Rd, Singapore 058763",
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
   capacity: 100,
-  user: user_3
+  user: user_3,
   category: "cafe"
 )
 Venue.create!(
@@ -47,6 +47,7 @@ Venue.create!(
   address: "200 South Bridge Rd, Singapore 058763",
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
   capacity: 100,
+  user: user_2,
   category: "bar"
 )
 venue_4 = Venue.create!(
@@ -54,7 +55,7 @@ venue_4 = Venue.create!(
   address: "11 Slim Barracks Rise, Singapore 138664",
   description: "Cafe, Event Space, Halal Venue",
   capacity: 100,
-  user: user_1
+  user: user_1,
   category: "cafe"
 )
 venue_5 = Venue.create!(
@@ -62,7 +63,7 @@ venue_5 = Venue.create!(
   address: "65 Ubi Rd 1, Singapore 408729",
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room",
   capacity: 50,
-  user: user_2
+  user: user_2,
   user_id: User.all.ids.sample,
   category: "cafe"
 )
