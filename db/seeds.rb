@@ -27,22 +27,17 @@ venue_1 = Venue.create!(
   user: user_1,
   category: "bar"
 )
+
 venue_2 = Venue.create!(
   name: "The Float@Marina Bay",
   address: "20 Raffles Ave. Singapore 039805",
   description: "Great place in marina bay Singapore",
   capacity: 500,
-  user: user_2
-)
-venue_3 =Venue.create!(
-  name: "Cloud9 Events",
-  address: "200 South Bridge Rd, Singapore 058763",
-  description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
-  capacity: 100,
-  user: user_3,
+  user: user_2,
   category: "cafe"
 )
-Venue.create!(
+
+venue_3 = Venue.create!(
   name: "Amazing Events",
   address: "200 South Bridge Rd, Singapore 058763",
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
@@ -50,6 +45,7 @@ Venue.create!(
   user: user_2,
   category: "bar"
 )
+
 venue_4 = Venue.create!(
   name: "Three Degree Cafe",
   address: "11 Slim Barracks Rise, Singapore 138664",
@@ -58,13 +54,13 @@ venue_4 = Venue.create!(
   user: user_1,
   category: "cafe"
 )
+
 venue_5 = Venue.create!(
   name: "Cloud9 Events",
   address: "65 Ubi Rd 1, Singapore 408729",
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room",
   capacity: 50,
   user: user_2,
-  user_id: User.all.ids.sample,
   category: "cafe"
 )
 
