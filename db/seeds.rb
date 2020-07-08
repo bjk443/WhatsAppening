@@ -63,32 +63,18 @@ venue_5 = Venue.create!(
   user: user_2,
   category: "cafe"
 )
-
 puts "Creating events..."
-
 event_1 = Event.create!(
   name: "The Greatest Show on Earth",
   venue: venue_1
 )
-
 event_2 = Event.create!(
   name: "The end of days",
   venue: venue_2
 )
-
 event_3 = Event.create!(
   name: "200m run",
   venue: venue_3
-)
-
-event_4 = Event.create!(
-  name: "Concert",
-  venue: venue_4
-)
-
-event_5 = Event.create!(
-  name: "Bar fight",
-  venue: venue_5
 )
 
 puts "Creating ratings..."
@@ -98,35 +84,30 @@ Rating.create!(
   crowd_level: 6,
   event: event_1
 )
-
 Rating.create!(
   stars: 5,
   comment: "Did you hear that DJ?",
   crowd_level: 8,
   event: event_1
 )
-
 Rating.create!(
   stars: 3,
   comment: "A night to remember!",
   crowd_level: 10,
   event: event_2
 )
-
 Rating.create!(
   stars: 1,
   comment: "What a waste of my time!",
   crowd_level: 3,
   event: event_2
 )
-
 Rating.create!(
   stars: 2,
   comment: "A night to remember!",
   crowd_level: 10,
   event: event_3
 )
-
 Rating.create!(
   stars: 0,
   comment: "What a waste of my time!",
