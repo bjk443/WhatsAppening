@@ -40,18 +40,18 @@
         <div class="row">
           <% @venues.each do |venue|%>
             <div class="event-card">
-                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+                <%#= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
                 <div class="card-trip-infos">
                 <h2><%= venue.events.first.name %></h2>
                 <h3><%= venue.name %></h3>
                 <!--star ratings -->
-                <% full_stars = venue.events.first.total_rating.round %>
+                <% full_stars = venue.events.last.average_rating.round %>
                 <% empty_stars = 5 - full_stars %>
                 <% full_stars.times do %>
-                <span class="fa fa-star checked"></span>
+                <i class="fa fa-star" aria-hidden="true"></i>
                 <% end %>
                 <% empty_stars.times do %>
-                <span class="fa fa-star"></span>
+                  <i class="far fa-star"></i>
                 <% end %>
                
                 <!-- iterate through users who are logged in -->
