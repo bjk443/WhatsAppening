@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2020_07_08_100605) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.bigint "venue_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["venue_id"], name: "index_chatrooms_on_venue_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.time "start_time"
@@ -58,6 +66,16 @@ ActiveRecord::Schema.define(version: 2020_07_08_100605) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -100,8 +118,11 @@ ActiveRecord::Schema.define(version: 2020_07_08_100605) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "venues"
   add_foreign_key "events", "venues"
   add_foreign_key "members", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "ratings", "events"
   add_foreign_key "venues", "users"
 end

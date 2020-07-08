@@ -125,3 +125,9 @@ Venue.all.each do |venue|
       venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
     end
 end
+
+Chatroom.create(venue_id: venue_1.id)
+Chatroom.create(venue_id: venue_2.id)
+Chatroom.create(venue_id: venue_3.id)
+Chatroom.create(venue_id: venue_4.id)
+Chatroom.create(venue_id: venue_5.id)

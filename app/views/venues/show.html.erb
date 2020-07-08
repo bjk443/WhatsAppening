@@ -3,6 +3,18 @@
   <p><%= @venue.description%></p>
   <%raise %>
   <p>Event.raitings goes here</p>
-  <p>Live event box, music, timeleft</p>
-  <a href="https://api.deezer.com/oembed?url=http://www.deezer.com/track/3135556"></a>
 </div>
+
+<br>
+
+
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <% @chatroom.messages.each do |message| %>
+    <%= render 'messages/message', message: message %>
+  <% end %>
+</div>
+
+<%= simple_form_for [ @venue, @message ], remote: true do |f| %>
+  <%= f.input :content, label: false, placeholder: "Share the information~" %>
+  <%= f.submit "Submit" %>
+<% end %>
