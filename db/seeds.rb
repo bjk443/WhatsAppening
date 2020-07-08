@@ -70,20 +70,20 @@ event_2 = Event.create!(
 )
 
 event_3 = Event.create!(
-  name: "The end of days",
-  category: "religious",
+  name: "200m run",
+  category: "athletic",
   venue: venue_3
 )
 
 event_4 = Event.create!(
-  name: "The end of days",
-  category: "religious",
+  name: "Concert",
+  category: "concert",
   venue: venue_4
 )
 
 event_5 = Event.create!(
-  name: "The end of days",
-  category: "religious",
+  name: "Bar fight",
+  category: "bar",
   venue: venue_5
 )
 
@@ -97,6 +97,13 @@ Rating.create!(
 
 Rating.create!(
   stars: 5,
+  comment: "Did you hear that DJ?",
+  crowd_level: 8,
+  event: event_1
+)
+
+Rating.create!(
+  stars: 3,
   comment: "A night to remember!",
   crowd_level: 10,
   event: event_2
@@ -109,6 +116,27 @@ Rating.create!(
   event: event_2
 )
 
+Rating.create!(
+  stars: 2,
+  comment: "A night to remember!",
+  crowd_level: 10,
+  event: event_3
+)
 
+Rating.create!(
+  stars: 0,
+  comment: "What a waste of my time!",
+  crowd_level: 3,
+  event: event_3
+)
 
-
+puts "Attaching pictures for venues..."
+Venue.all.each do |venue|
+  names = ["amara-", "royal-", "tonito-"]
+  house = names.sample
+    for i in (1..5) do
+      name = "#{house}#{i}.jpg"
+      file = File.open(File.join(__dir__,"./seed_picture/#{name}"))
+      venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
+    end
+end
