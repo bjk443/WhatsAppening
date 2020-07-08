@@ -32,17 +32,10 @@ venue_2 = Venue.create!(
   address: "20 Raffles Ave. Singapore 039805",
   description: "Great place in marina bay Singapore",
   capacity: 500,
-  user: user_2
-)
-venue_3 =Venue.create!(
-  name: "Cloud9 Events",
-  address: "200 South Bridge Rd, Singapore 058763",
-  description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
-  capacity: 100,
-  user: user_3,
+  user: user_2,
   category: "cafe"
 )
-Venue.create!(
+venue_3 = Venue.create!(
   name: "Amazing Events",
   address: "200 South Bridge Rd, Singapore 058763",
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
@@ -64,35 +57,20 @@ venue_5 = Venue.create!(
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room",
   capacity: 50,
   user: user_2,
-  user_id: User.all.ids.sample,
   category: "cafe"
 )
-
 puts "Creating events..."
-
 event_1 = Event.create!(
   name: "The Greatest Show on Earth",
   venue: venue_1
 )
-
 event_2 = Event.create!(
   name: "The end of days",
   venue: venue_2
 )
-
 event_3 = Event.create!(
   name: "200m run",
   venue: venue_3
-)
-
-event_4 = Event.create!(
-  name: "Concert",
-  venue: venue_4
-)
-
-event_5 = Event.create!(
-  name: "Bar fight",
-  venue: venue_5
 )
 
 puts "Creating ratings..."
@@ -102,35 +80,30 @@ Rating.create!(
   crowd_level: 6,
   event: event_1
 )
-
 Rating.create!(
   stars: 5,
   comment: "Did you hear that DJ?",
   crowd_level: 8,
   event: event_1
 )
-
 Rating.create!(
   stars: 3,
   comment: "A night to remember!",
   crowd_level: 10,
   event: event_2
 )
-
 Rating.create!(
   stars: 1,
   comment: "What a waste of my time!",
   crowd_level: 3,
   event: event_2
 )
-
 Rating.create!(
   stars: 2,
   comment: "A night to remember!",
   crowd_level: 10,
   event: event_3
 )
-
 Rating.create!(
   stars: 0,
   comment: "What a waste of my time!",
