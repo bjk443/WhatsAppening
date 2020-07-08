@@ -12,27 +12,34 @@ Event.destroy_all
 Venue.destroy_all
 User.destroy_all
 
-User.create(name: "john", email: "john@john.com", password: "123456", role: "admin" )
-User.create(name: "omar", email: "omar@omar.com", password: "123456", role: "admin" )
-User.create(name: "chris", email: "chris@chris.com", password: "123456", role: "admin" )
+user_1 = User.create(name: "john", email: "john@john.com", password: "123456", role: "admin" )
+user_2 = User.create(name: "omar", email: "omar@omar.com", password: "123456", role: "admin" )
+user_3 = User.create(name: "chris", email: "chris@chris.com", password: "123456", role: "admin" )
 
 puts "User created"
 puts "creating venues"
 
-Venue.create!(
+venue_1 = Venue.create!(
   name: "The Woods",
   address: "214 South Bridge Rd, Singapore 058763",
   description: "Event place, Meeting Room, Studio, Unique",
   capacity: 20,
-  user_id: User.all.ids.sample,
+  user: user_1
   category: "bar"
 )
-Venue.create!(
+venue_2 = Venue.create!(
   name: "The Float@Marina Bay",
   address: "20 Raffles Ave. Singapore 039805",
   description: "Great place in marina bay Singapore",
   capacity: 500,
-  user_id: User.all.ids.sample,
+  user: user_2
+)
+venue_3 =Venue.create!(
+  name: "Cloud9 Events",
+  address: "200 South Bridge Rd, Singapore 058763",
+  description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
+  capacity: 100,
+  user: user_3
   category: "cafe"
 )
 Venue.create!(
@@ -40,62 +47,94 @@ Venue.create!(
   address: "200 South Bridge Rd, Singapore 058763",
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
   capacity: 100,
-  user_id: User.all.ids.sample,
   category: "bar"
 )
-Venue.create!(
+venue_4 = Venue.create!(
   name: "Three Degree Cafe",
   address: "11 Slim Barracks Rise, Singapore 138664",
   description: "Cafe, Event Space, Halal Venue",
   capacity: 100,
-  user_id: User.all.ids.sample,
+  user: user_1
   category: "cafe"
 )
-Venue.create!(
+venue_5 = Venue.create!(
   name: "Cloud9 Events",
   address: "65 Ubi Rd 1, Singapore 408729",
   description: "Event Space, Function Hall, Kids & Recreational, Meeting Room",
   capacity: 50,
+  user: user_2
   user_id: User.all.ids.sample,
   category: "cafe"
 )
 
 puts "Creating events..."
 
-Event.create!(
+event_1 = Event.create!(
   name: "The Greatest Show on Earth",
-  venue_id: Venue.all.ids.sample,
+  venue: venue_1
 )
 
-Event.create!(
+event_2 = Event.create!(
   name: "The end of days",
-  venue_id: Venue.all.ids.sample,
+  venue: venue_2
+)
 
+event_3 = Event.create!(
+  name: "200m run",
+  venue: venue_3
+)
+
+event_4 = Event.create!(
+  name: "Concert",
+  venue: venue_4
+)
+
+event_5 = Event.create!(
+  name: "Bar fight",
+  venue: venue_5
 )
 
 puts "Creating ratings..."
 Rating.create!(
-  stars: 3.5,
+  stars: 3,
   comment: "Did you hear that DJ?",
   crowd_level: 6,
-  event_id: Event.all.ids.sample,
-
+  event: event_1
 )
 
 Rating.create!(
   stars: 5,
+  comment: "Did you hear that DJ?",
+  crowd_level: 8,
+  event: event_1
+)
+
+Rating.create!(
+  stars: 3,
   comment: "A night to remember!",
   crowd_level: 10,
-  event_id: Event.all.ids.sample,
-
+  event: event_2
 )
 
 Rating.create!(
   stars: 1,
   comment: "What a waste of my time!",
   crowd_level: 3,
-  event_id: Event.all.ids.sample,
+  event: event_2
+)
 
+Rating.create!(
+  stars: 2,
+  comment: "A night to remember!",
+  crowd_level: 10,
+  event: event_3
+)
+
+Rating.create!(
+  stars: 0,
+  comment: "What a waste of my time!",
+  crowd_level: 3,
+  event: event_3
 )
 
 puts "Attaching pictures for venues..."
@@ -108,6 +147,3 @@ Venue.all.each do |venue|
       venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
     end
 end
-
-
-
