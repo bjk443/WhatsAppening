@@ -7,7 +7,7 @@ class VenuesController < ApplicationController
     if search_query.nil? || search_query.empty?
       @venues = Venue.all
     else
-      @venues = Venue.search_by_name_and_address(search_query)
+      @venues = Venue.near(search_query, 2)
     end
   end
 
