@@ -6,33 +6,49 @@
 
 
 <!-- container for orange background -->
+<% if @search_query.nil? || @search_query.empty? %>
+  <div class="container">
 
-<div header-container>
-<!-- navigation bar -->
+    <div header-container>
+    <!-- navigation bar -->
 
-<!-- avatar -->
-<img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+    <!-- avatar -->
+    <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
 
 
-<!-- title -->
+    <!-- title -->
 
-<h1>Hello, John !<h1>
-<h2>Where would you like to go</h2>
+    <h1>Hello, John !<h1>
+    <h2>Where would you like to go</h2>
 
-<!-- filtering and searchbox -->
+    <!-- filtering and searchbox -->
 
-  <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Near-by</a>
-      <a class="dropdown-item" href="#">Another </a>
+      <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+      </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Near-by</a>
+          <a class="dropdown-item" href="#">Another </a>
+        </div>
+      </div>
+    <!-- container end, apply border-radius to bottom onl -->
     </div>
-  </div>
-
-<!-- container end, apply border-radius to bottom onl -->
-</div>
+    <!-- filter tabs -->
+    <div class="container mt-3 tabs-and-event-cards">
+        <div class="filter-tabs">
+        <ul class="list-inline tabs-underlined">
+            <li>
+            <a href="#" class="tab-underlined active">Venues</a>
+            </li>
+            <li>
+            <a href="#" class="tab-underlined">Events</a>
+            </li>
+            <li>
+            <a href="#" class="tab-underlined">Promotions</a>
+            </li>
+        </ul>
+        </div>
 
 <!-- cards -->
   <!-- iterate through venue cards with events -->
@@ -62,15 +78,53 @@
                 <p>no event at the moment</p>
                 </div>
               <% end %>
-              
+            <% end %>
+
               <div class="users-online">
                 <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
               </div>
             </div>
-          <% end %>
         </div>
     </div>
-</div>
+  </div>
+<% else %>
+<!--   search result layout
+ -->
+    <div class="container mt-3 venue-section">
+        <div class="row">
+          <% @venues_search.each do |venue|%>
+            <div class="event-card">
+              <% if venue.events != nil %>
+                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+                <div class="card-trip-infos">
+                <h2><%= link_to venue.name, venue_path(venue) %></h2>
+                <h3><%= venue.events.last.name %></h3>
+                <!--star ratings -->
+                <% full_stars = venue.events.last.average_rating.round %>
+                <% empty_stars = 5 - full_stars %>
+                <% full_stars.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <% end %>
+                <% empty_stars.times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                 (<%= venue.events.last.ratings.count %>)
+                <!-- iterate through users who are logged in -->
+              <% elsif venue.events.nil? %>
+                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+                <h3><%= venue.name %></h3>
+                <p>no event at the moment</p>
+                </div>
+              <% end %>
+            <% end %>
+
+              <div class="users-online">
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              </div>
+            </div>
+        </div>
+    </div>
+<% end %>
 <!--stars, in ratings controller add methods to calculate/round full,empty stars from the ratings of the user -->
 <!-- avatar, in livefeed controller add method to get users currently live, iterate and call .each on them in view  -->
 
