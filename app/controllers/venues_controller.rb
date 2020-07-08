@@ -12,19 +12,12 @@ class VenuesController < ApplicationController
       @category_of_venues = Venue.search_by_category(@search_query)
       @venues_search = @category_of_venues.near([latitude, longitude], 2)
     end
-
-
-    # search_query = params.dig(:search, :address)
-    # if search_query.nil? || search_query.empty?
-    #   @venues = Venue.all
-    # else
-    #   @venues = Venue.near([latitude, longitude], 2)
-    # end
   end
 
   def show
     @venue = Venue.find(params[:id])
-    # session[:stored_url] = request.url
+    @chatroom = @venue.chatroom
+    @message = Message.new
   end
 
   def new
