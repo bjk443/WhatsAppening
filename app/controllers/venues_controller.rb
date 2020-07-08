@@ -11,10 +11,9 @@ class VenuesController < ApplicationController
     end
   end
 
-
   def show
     @venue = Venue.find(params[:id])
-
+    # session[:stored_url] = request.url
   end
 
   def new
