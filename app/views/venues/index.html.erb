@@ -40,10 +40,11 @@
         <div class="row">
           <% @venues.each do |venue|%>
             <div class="event-card">
+              <% if venue.events != nil %>
                 <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
                 <div class="card-trip-infos">
-                <h2><%= venue.events.last.name %></h2>
-                <h3><%= venue.name %></h3>
+                <h2><%= link_to venue.name, venue_path(venue) %></h2>
+                <h3><%= venue.events.last.name %></h3>
                 <!--star ratings -->
                 <% full_stars = venue.events.last.average_rating.round %>
                 <% empty_stars = 5 - full_stars %>
@@ -54,11 +55,17 @@
                   <i class="far fa-star"></i>
                 <% end %>
                  (<%= venue.events.last.ratings.count %>)
-               
                 <!-- iterate through users who are logged in -->
-                <div class="users-online">
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <% elsif venue.events.nil? %>
+                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+                <h3><%= venue.name %></h3>
+                <p>no event at the moment</p>
                 </div>
+              <% end %>
+              
+              <div class="users-online">
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              </div>
             </div>
           <% end %>
         </div>
