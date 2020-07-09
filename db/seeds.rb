@@ -162,3 +162,14 @@ Chatroom.create(venue_id: venue_2.id)
 Chatroom.create(venue_id: venue_3.id)
 Chatroom.create(venue_id: venue_4.id)
 Chatroom.create(venue_id: venue_5.id)
+
+puts "Attaching pictures for venues..."
+Venue.all.each do |venue|
+  names = ["amara-", "royal-", "tonito-"]
+  house = names.sample
+    for i in (1..5) do
+      name = "#{house}#{i}.jpg"
+      file = File.open(File.join(__dir__,"./seed_picture/#{name}"))
+      venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
+    end
+end
