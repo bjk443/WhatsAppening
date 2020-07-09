@@ -109,7 +109,7 @@
                 <i class="far fa-user"></i><p> Capacity: <%= venue.capacity %></p>
                 <!-- waiting time -->
                 <i class="far fa-clock"></i><p> Waiting Time: <%= venue.events.last.waiting_time_now %> </p>
-                
+
                 <!-- crowd level -->
                 <% crowded = venue.events.last.average_crowded_level.round %>
                 <% uncrowded = 10 - venue.events.last.average_crowded_level.round %>

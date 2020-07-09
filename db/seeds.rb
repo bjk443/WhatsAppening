@@ -28,6 +28,7 @@ venue_1 = Venue.create!(
   user: user_1,
   category: "bar"
 )
+
 venue_2 = Venue.create!(
   name: "The Float@Marina Bay",
   address: "20 Raffles Ave. Singapore 039805",
@@ -36,6 +37,7 @@ venue_2 = Venue.create!(
   user: user_2,
   category: "cafe"
 )
+
 venue_3 = Venue.create!(
   name: "Amazing Events",
   address: "200 South Bridge Rd, Singapore 058763",
@@ -44,6 +46,7 @@ venue_3 = Venue.create!(
   user: user_2,
   category: "bar"
 )
+
 venue_4 = Venue.create!(
   name: "Three Degree Cafe",
   address: "11 Slim Barracks Rise, Singapore 138664",
@@ -52,6 +55,7 @@ venue_4 = Venue.create!(
   user: user_1,
   category: "cafe"
 )
+
 venue_5 = Venue.create!(
   name: "Cloud9 Events",
   address: "65 Ubi Rd 1, Singapore 408729",
@@ -63,24 +67,40 @@ venue_5 = Venue.create!(
 puts "Creating events..."
 event_1 = Event.create!(
   name: "The Greatest Show on Earth",
+  artist: "Daft Punk",
+  genre: "House",
   venue: venue_1
 )
 event_2 = Event.create!(
-  name: "Bacchus's birthday",
+  name: "The end of days",
+  artist: "Beyonce",
+  genre: "Pop",
+  venue: venue_2
+)
+event_3 = Event.create!(
+  name: "200m run",
+  artist: "Jay-Z",
+  genre: "Hip Hop",
   venue: venue_2
 )
 event_3 = Event.create!(
   name: "Halloween bar crawl",
+  artist: "Eminem",
+  genre: "Rap",
   venue: venue_3
 )
 
 event_4 = Event.create!(
   name: "Booze cruise",
+  artist: "U2",
+  genre: "Rock",
   venue: venue_4
 )
 
 event_5 = Event.create!(
   name: "Full Moon Party",
+  artist: "Vivaldi",
+  genre: "Classic",
   venue: venue_5
 )
 
@@ -157,6 +177,17 @@ Rating.create!(
   waiting_time: "30 min +",
   event: event_3
 )
+
+puts "Attaching pictures for venues..."
+Venue.all.each do |venue|
+  names = ["amara-", "royal-", "tonito-"]
+  house = names.sample
+    for i in (1..5) do
+      name = "#{house}#{i}.jpg"
+      file = File.open(File.join(__dir__,"./seed_picture/#{name}"))
+      venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
+    end
+end
 
 Chatroom.create(venue_id: venue_1.id)
 Chatroom.create(venue_id: venue_2.id)
