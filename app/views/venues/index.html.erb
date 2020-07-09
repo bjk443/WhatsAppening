@@ -57,7 +57,7 @@
           <% @venues.each do |venue|%>
             <div class="event-card">
               <% if venue.events != nil %>
-                <%#= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
                 <div class="card-trip-infos">
                 <h2><%= link_to venue.name, venue_path(venue) %></h2>
                 <h3><%= venue.events.last.name %></h3>
@@ -71,9 +71,12 @@
                   <i class="far fa-star"></i>
                 <% end %>
                  (<%= venue.events.last.ratings.count %>)
+                <div class="users-online">
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+                </div>
                 <!-- iterate through users who are logged in -->
-              <% elsif venue.events.nil? %>
-                <%#= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+              <% elsif venue.events.empty? %>
+                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
                 <h3><%= venue.name %></h3>
                 <p>no event at the moment</p>
                 </div>
@@ -93,12 +96,12 @@
     <div class="container mt-3 venue-section">
         <div class="row">
           <div class = "search-result-title">
-            <h3> <%= @venues_search.length %> Venues available<h3>
+            <h3> <%= @venues_search.length %> Venues identified!<h3>
           </div>
           <% @venues_search.each do |venue|%>
             <div class="event-card">
               <% if venue.events != nil %>
-                <%#= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
                 <div class="card-trip-infos">
                 <h2><%= link_to venue.name, venue_path(venue) %></h2>
                 <h3><%= venue.events.last.name %></h3>
@@ -117,17 +120,30 @@
                   <i class="far fa-user"></i>
                 <% end %>
 
+                <div class="tempo">
+                  <input
+                    type="range"
+                    class="tempo-slider"
+                    max="10"
+                    min="0"
+                    value="<%= crowded %>"
+                  />
+                </div>
+
               <% elsif venue.events.nil? %>
                 <%#= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
                 <h3><%= venue.name %></h3>
                 <p>no event at the moment</p>
                 </div>
               <% end %>
+            <div class="users-online">
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            </div>
+            <div class="social-icons">
+              <i class="fas fa-share-alt"></i>
+              <i class="far fa-heart"></i>
+            </div>
           <% end %>
-
-              <div class="users-online">
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-              </div>
             </div>
         </div>
     </div>
