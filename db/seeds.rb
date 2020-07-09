@@ -66,14 +66,20 @@ venue_5 = Venue.create!(
 puts "Creating events..."
 event_1 = Event.create!(
   name: "The Greatest Show on Earth",
+  artist: "Daft Punk",
+  genre: "House",
   venue: venue_1
 )
 event_2 = Event.create!(
   name: "The end of days",
+  artist: "Beyonce",
+  genre: "Pop",
   venue: venue_2
 )
 event_3 = Event.create!(
   name: "200m run",
+  artist: "Jay-Z",
+  genre: "Hip Hop",
   venue: venue_3
 )
 
