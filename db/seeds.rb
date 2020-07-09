@@ -71,7 +71,6 @@ event_1 = Event.create!(
   venue: venue_1
 )
 event_2 = Event.create!(
-<<<<<<< HEAD
   name: "The end of days",
   artist: "Beyonce",
   genre: "Pop",
@@ -81,23 +80,26 @@ event_3 = Event.create!(
   name: "200m run",
   artist: "Jay-Z",
   genre: "Hip Hop",
-=======
-  name: "Bacchus's birthday",
   venue: venue_2
 )
 event_3 = Event.create!(
   name: "Halloween bar crawl",
->>>>>>> master
+  artist: "Eminem",
+  genre: "Rap",
   venue: venue_3
 )
 
 event_4 = Event.create!(
   name: "Booze cruise",
+  artist: "U2",
+  genre: "Rock",
   venue: venue_4
 )
 
 event_5 = Event.create!(
   name: "Full Moon Party",
+  artist: "Vivaldi",
+  genre: "Classic",
   venue: venue_5
 )
 
