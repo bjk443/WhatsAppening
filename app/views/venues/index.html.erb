@@ -57,7 +57,7 @@
           <% @venues.each do |venue|%>
             <div class="event-card">
               <% if venue.events != nil %>
-                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+                <%#= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
                 <div class="card-trip-infos">
                 <h2><%= link_to venue.name, venue_path(venue) %></h2>
                 <h3><%= venue.events.last.name %></h3>
@@ -89,27 +89,33 @@
   </div>
 <% else %>
 <!--   search result layout -->
-    <div class = "search-result-title">
-      <h3> <%= @venues.length %> Venues available<h3>
-    </div>
 
     <div class="container mt-3 venue-section">
         <div class="row">
+          <div class = "search-result-title">
+            <h3> <%= @venues_search.length %> Venues available<h3>
+          </div>
           <% @venues_search.each do |venue|%>
             <div class="event-card">
               <% if venue.events != nil %>
-                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+                <%#= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
                 <div class="card-trip-infos">
                 <h2><%= link_to venue.name, venue_path(venue) %></h2>
                 <h3><%= venue.events.last.name %></h3>
                 <!-- capacity -->
                 <i class="far fa-user"></i><p> Capacity: <%= venue.capacity %></p>
                 <!-- waiting time -->
-                <i class="far fa-clock"></i><p> Waiting Time: 50 min </p>
+                <i class="far fa-clock"></i><p> Waiting Time: <%= venue.events.last.waiting_time_now %> </p>
                 
                 <!-- crowd level -->
-                <%= crowded = venue.events.last.average_crowded_level.round %>
-                <%= uncrowded = 10 - venue.events.last.average_crowded_level.round %>
+                <% crowded = venue.events.last.average_crowded_level.round %>
+                <% uncrowded = 10 - venue.events.last.average_crowded_level.round %>
+                <% crowded.times do %>
+                  <i class="fas fa-user"></i>
+                <% end %>
+                <% uncrowded.times do %>
+                  <i class="far fa-user"></i>
+                <% end %>
 
               <% elsif venue.events.nil? %>
                 <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>

@@ -25,10 +25,11 @@ class Event < ApplicationRecord
     end
 
     def waiting_time_now
-        if self.rating.count == 0
+        if self.ratings.count == 0
           return 0
         else
-          waiting_time_now = rating.waiting_time.last
+          waiting_time_now = 0
+          waiting_time_now = self.ratings.last.waiting_time
         end
         return waiting_time_now
     end
