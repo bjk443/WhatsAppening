@@ -9,6 +9,7 @@ require "open-uri"
 
 Rating.destroy_all
 Event.destroy_all
+Chatroom.destroy_all
 Venue.destroy_all
 User.destroy_all
 
@@ -176,6 +177,17 @@ Rating.create!(
   waiting_time: "30 min +",
   event: event_3
 )
+
+puts "Attaching pictures for venues..."
+Venue.all.each do |venue|
+  names = ["amara-", "royal-", "tonito-"]
+  house = names.sample
+    for i in (1..5) do
+      name = "#{house}#{i}.jpg"
+      file = File.open(File.join(__dir__,"./seed_picture/#{name}"))
+      venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
+    end
+end
 
 Chatroom.create(venue_id: venue_1.id)
 Chatroom.create(venue_id: venue_2.id)
