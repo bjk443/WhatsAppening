@@ -71,6 +71,7 @@ event_1 = Event.create!(
   venue: venue_1
 )
 event_2 = Event.create!(
+<<<<<<< HEAD
   name: "The end of days",
   artist: "Beyonce",
   genre: "Pop",
@@ -80,7 +81,24 @@ event_3 = Event.create!(
   name: "200m run",
   artist: "Jay-Z",
   genre: "Hip Hop",
+=======
+  name: "Bacchus's birthday",
+  venue: venue_2
+)
+event_3 = Event.create!(
+  name: "Halloween bar crawl",
+>>>>>>> master
   venue: venue_3
+)
+
+event_4 = Event.create!(
+  name: "Booze cruise",
+  venue: venue_4
+)
+
+event_5 = Event.create!(
+  name: "Full Moon Party",
+  venue: venue_5
 )
 
 puts "Creating ratings..."
@@ -88,49 +106,74 @@ Rating.create!(
   stars: 3,
   comment: "Did you hear that DJ?",
   crowd_level: 6,
+  waiting_time: "30 min",
   event: event_1
 )
 Rating.create!(
   stars: 5,
   comment: "Did you hear that DJ?",
   crowd_level: 8,
+  waiting_time: "15 min",
   event: event_1
 )
 Rating.create!(
   stars: 3,
   comment: "A night to remember!",
   crowd_level: 10,
+  waiting_time: "45 min",
   event: event_2
 )
 Rating.create!(
   stars: 1,
   comment: "What a waste of my time!",
   crowd_level: 3,
+  waiting_time: "30 min +",
   event: event_2
 )
 Rating.create!(
   stars: 2,
   comment: "A night to remember!",
   crowd_level: 10,
+  waiting_time: "no wait",
   event: event_3
 )
 Rating.create!(
   stars: 0,
   comment: "What a waste of my time!",
   crowd_level: 3,
+  waiting_time: "10 min",
   event: event_3
 )
 
-puts "Attaching pictures for venues..."
-Venue.all.each do |venue|
-  names = ["amara-", "royal-", "tonito-"]
-  house = names.sample
-    for i in (1..5) do
-      name = "#{house}#{i}.jpg"
-      file = File.open(File.join(__dir__,"./seed_picture/#{name}"))
-      venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
-    end
-end
+Rating.create!(
+  stars: 5,
+  comment: "A night to remember!",
+  crowd_level: 10,
+  waiting_time: "10 min",
+  event: event_3
+)
+Rating.create!(
+  stars: 3,
+  comment: "What a waste of my time!",
+  crowd_level: 7,
+  waiting_time: "5 min",
+  event: event_3
+)
+
+Rating.create!(
+  stars: 1,
+  comment: "A night to remember!",
+  crowd_level: 5,
+  waiting_time: "30 min",
+  event: event_3
+)
+Rating.create!(
+  stars: 4,
+  comment: "What a waste of my time!",
+  crowd_level: 2,
+  waiting_time: "30 min +",
+  event: event_3
+)
 
 Chatroom.create(venue_id: venue_1.id)
 Chatroom.create(venue_id: venue_2.id)
