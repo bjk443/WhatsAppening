@@ -65,12 +65,22 @@ event_1 = Event.create!(
   venue: venue_1
 )
 event_2 = Event.create!(
-  name: "The end of days",
+  name: "Bacchus's birthday",
   venue: venue_2
 )
 event_3 = Event.create!(
-  name: "200m run",
+  name: "Halloween bar crawl",
   venue: venue_3
+)
+
+event_4 = Event.create!(
+  name: "Booze cruise",
+  venue: venue_4
+)
+
+event_5 = Event.create!(
+  name: "Full Moon Party",
+  venue: venue_5
 )
 
 puts "Creating ratings..."
@@ -111,16 +121,31 @@ Rating.create!(
   event: event_3
 )
 
-puts "Attaching pictures for venues..."
-Venue.all.each do |venue|
-  names = ["amara-", "royal-", "tonito-"]
-  house = names.sample
-    for i in (1..5) do
-      name = "#{house}#{i}.jpg"
-      file = File.open(File.join(__dir__,"./seed_picture/#{name}"))
-      venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
-    end
-end
+Rating.create!(
+  stars: 5,
+  comment: "A night to remember!",
+  crowd_level: 10,
+  event: event_3
+)
+Rating.create!(
+  stars: 3,
+  comment: "What a waste of my time!",
+  crowd_level: 7,
+  event: event_3
+)
+
+Rating.create!(
+  stars: 1,
+  comment: "A night to remember!",
+  crowd_level: 5,
+  event: event_3
+)
+Rating.create!(
+  stars: 4,
+  comment: "What a waste of my time!",
+  crowd_level: 2,
+  event: event_3
+)
 
 Chatroom.create(venue_id: venue_1.id)
 Chatroom.create(venue_id: venue_2.id)
