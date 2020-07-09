@@ -29,8 +29,8 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { initMapbox } from '../plugins/init_mapbox';
+// import { initSoundCard } from '../channels/live_music_card';
 import { liveBtn } from '../channels/live_button';
-import { initSoundCard } from '../channels/live_music_card';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -38,5 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   liveBtn();
   initChatroomCable();
-  initSoundCard();
+  // initSoundCard();
 });
