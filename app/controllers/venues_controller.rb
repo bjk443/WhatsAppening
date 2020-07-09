@@ -11,7 +11,15 @@ class VenuesController < ApplicationController
     else
       @category_of_venues = Venue.search_by_category(@search_query)
       @venues_search = @category_of_venues.near([latitude, longitude], 2)
+      @markers = @venues_search.map do |venue|
+        {
+          lat: venue.latitude,
+          lng: venue.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { venue: venue })
+        }
+      end
     end
+
   end
 
   def show
