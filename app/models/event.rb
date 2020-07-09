@@ -21,6 +21,16 @@ class Event < ApplicationRecord
             sum_crowding += rating.crowd_level
             end
         return sum_crowding / self.ratings.count
+        end
+    end
+
+    def waiting_time_now
+        if self.rating.count == 0
+          return 0
+        else
+          waiting_time_now = rating.waiting_time.last
+        end
+        return waiting_time_now
     end
 end
 
