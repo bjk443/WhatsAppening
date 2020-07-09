@@ -9,6 +9,7 @@ require "open-uri"
 
 Rating.destroy_all
 Event.destroy_all
+Chatroom.destroy_all
 Venue.destroy_all
 User.destroy_all
 
