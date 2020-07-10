@@ -69,39 +69,45 @@ event_1 = Event.create!(
   name: "The Greatest Show on Earth",
   artist: "Daft Punk",
   genre: "House",
-  venue: venue_1
+  venue: venue_1,
+  playlist_id: "2098157264"
 )
 event_2 = Event.create!(
   name: "The end of days",
   artist: "Beyonce",
   genre: "Pop",
-  venue: venue_2
+  venue: venue_2,
+  playlist_id: "1677006641"
 )
 event_3 = Event.create!(
   name: "200m run",
   artist: "Jay-Z",
   genre: "Hip Hop",
-  venue: venue_2
+  venue: venue_2,
+  playlist_id: "1677006641"
 )
 event_3 = Event.create!(
   name: "Halloween bar crawl",
   artist: "Eminem",
   genre: "Rap",
-  venue: venue_3
+  venue: venue_3,
+  playlist_id: "3110422662"
 )
 
 event_4 = Event.create!(
   name: "Booze cruise",
   artist: "U2",
   genre: "Rock",
-  venue: venue_4
+  venue: venue_4,
+  playlist_id: "3110422662"
 )
 
 event_5 = Event.create!(
   name: "Full Moon Party",
   artist: "Vivaldi",
   genre: "Classic",
-  venue: venue_5
+  venue: venue_5,
+  playlist_id: "3110422662"
 )
 
 puts "Creating ratings..."
