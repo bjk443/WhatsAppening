@@ -1,17 +1,16 @@
 class RatingsController < ApplicationController
 before_action :find_event, except: [:destroy] #will not find event that does not exist
     def new
-        @rating = rating.new
+        @rating = Rating.new
     end
 
     def edit
-        @rating = rating.find(params[:id])
+        @rating = Rating.find(params[:id])
     end
 
     def create
-        @rating = rating.new(rating_params)
-        @rating.save
-        @rating.event = @event
+        @rating = Rating.new(rating_params)
+        @event = @rating.event 
         if @rating.save
         redirect_to event_path(@event)
         else
@@ -20,13 +19,13 @@ before_action :find_event, except: [:destroy] #will not find event that does not
     end
 
     def update
-        @rating = rating.find(params[:id])
+        @rating = Rating.find(params[:id])
         @rating.update(rating_params)
         redirect_to event_path(@rating)
     end
 
     def destroy
-        @rating = rating.find(params[:id])
+        @rating = Rating.find(params[:id])
         @rating.destroy!
         redirect_to event_path(@rating.event) #go back to event
     end
@@ -34,11 +33,11 @@ before_action :find_event, except: [:destroy] #will not find event that does not
     private
 
     def find_event
-        @event = event.find(params[:event_id])
+        @event = Event.find(params[:event_id])
     end
 
     def rating_params
-        params.require(:rating).permit(:content, :rating)
+        params.require(:rating).permit(:test, :stars, :waiting_time, :crowd_level)
     end
 end
 
