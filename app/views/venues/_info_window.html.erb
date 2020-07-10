@@ -3,7 +3,7 @@
         <div class="event-card-info-window">
           <% if venue.events != nil %>
             <%= link_to venue_path(venue) do %>
-              <%#= cl_image_tag venue.photos[0].key, height:120, crop: :fill, class: "w-100" %>
+              <%= cl_image_tag venue.photos[0].key, height:120, crop: :fill, class: "w-100" %>
             <% end %>
               <div class="card-trip-infos">
               <h3 class="mt-2"><%= link_to venue.name, venue_path(venue) %></h3>
@@ -22,7 +22,7 @@
                  (<%= venue.events.last.ratings.count %>)
                 <!-- iterate through users who are logged in -->
               <% elsif venue.events.nil? %>
-                <%#= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
+                <%= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "w-100" %>
                 <h3><%= venue.name %></h3>
                 <p>no event at the moment</p>
                 </div>
