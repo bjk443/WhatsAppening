@@ -22,7 +22,12 @@ class VenuesController < ApplicationController
   end
 
   def show
+    # call Deezer ->
+    # get the info
+    base_url = "https://api.deezer.com/playlist/"
     @venue = Venue.find(params[:id])
+    # @venue_playlist_info
+    @playlist_data = HTTParty.get(base_url + @venue.events.first.playlist_id)
     @chatroom = @venue.chatroom
     @message = Message.new
   end
