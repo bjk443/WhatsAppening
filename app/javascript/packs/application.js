@@ -35,12 +35,8 @@ import { liveBtn } from '../channels/live_button';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-<<<<<<< HEAD
-
-=======
   initMapbox();
   liveBtn();
->>>>>>> 041dbc108d24b67bc42e219e2eee5234ac759f68
   initChatroomCable();
   // initSoundCard();
 });
