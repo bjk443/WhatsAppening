@@ -1,1 +1,90 @@
 // Specific CSS for your home-page
+body {
+  // overflow: hidden;
+}
+.container_orange {
+  padding: 30px 10px 40px 10px;
+  background-color: #ff7700;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+  .row {
+    flex-wrap: nowrap;
+  }
+
+  h2 {
+    font-weight: 600;
+    color: white;
+    font-size: 41px;
+  }
+  .form-control {
+    padding: 25px 20px;
+    border-radius: 10px;
+  }
+  h3 {
+    font-weight: 600;
+    color: white;
+    font-size: 32px;
+  }
+}
+
+.header-index {
+  // padding: 50px 20px;
+}
+
+.search_input {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.filter-tabs {
+  margin: 25px 0;
+  a {
+    color: black;
+    opacity: 0.3;
+  }
+  .active {
+    opacity: 1;
+    border-bottom: 2px solid #ff7700;
+  }
+}
+
+// Event card
+
+.event-card {
+  height: 390px;
+  width: 70vw;
+  margin: 0 10px 20px 20px;
+  border-radius: 23px;
+  position: relative;
+  overflow: visible;
+  .card-trip-infos {
+    position: absolute;
+    bottom: 35px;
+    left: 20px;
+  }
+  h2 {
+    margin-bottom: 0;
+  }
+  h2 a {
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0;
+  }
+  h6 {
+    color: white;
+    margin-bottom: 0;
+  }
+}
+
+.card-trip-infos i {
+  font-size: 11px;
+}
+.orange {
+  color: #ff7700 !important;
+}
+
+[aria-hidden="true"] {
+  color: white;
+}
