@@ -179,6 +179,7 @@ Rating.create!(
 )
 
 puts "Attaching pictures for venues..."
+
 Venue.all.each do |venue|
   names = ["amara-", "royal-", "tonito-"]
   house = names.sample
