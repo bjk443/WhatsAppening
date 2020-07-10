@@ -3,47 +3,45 @@
   <p><%= @venue.description%></p>
   <p> Event raitings goes here</p>
   <p> <%= @venue.events.last.name %></p>
-  <div class="container">
+  <div class="container mt-3">
     <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay
-    src="https%3A//api.soundcloud.com/tracks/293&amp">
-</iframe>
   </div>
 </div>
 
 <br>
-
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-    <%= render 'messages/message', message: message %>
-  <% end %>
-</div>
-
-<div class="btn-show btn btn-primary" data-venue="<%= @venue.id %>" data-toggle="modal" data-target="#myModal">Live now</div>
-
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">how crowded is the place?</h4>
-        </div>
-        <div class="modal-body">
-          <p>1, 2, 3, 4, 5, 6, 7, 8, 9, 10</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
+<div class="container">
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.each do |message| %>
+      <%= render 'messages/message', message: message %>
+    <% end %>
   </div>
 
-<div class="message-area">
-  <%= simple_form_for [ @venue, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Share the information~" %>
-    <%= f.submit "Submit" %>
-  <% end %>
+  <div class="btn-show btn btn-primary" data-venue="<%= @venue.id %>" data-toggle="modal" data-target="#myModal">Live now</div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">how crowded is the place?</h4>
+          </div>
+          <div class="modal-body">
+            <p>1, 2, 3, 4, 5, 6, 7, 8, 9, 10</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <div class="message-area">
+    <%= simple_form_for [ @venue, @message ], remote: true do |f| %>
+      <%= f.input :content, label: false, placeholder: "Share the information~" %>
+      <%= f.submit "Submit" %>
+    <% end %>
+  </div>
 </div>
