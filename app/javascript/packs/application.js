@@ -29,11 +29,19 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { initMapbox } from '../plugins/init_mapbox';
+// import { initSoundCard } from '../channels/live_music_card';
+import { liveBtn } from '../channels/live_button';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+<<<<<<< HEAD
 
+=======
+  initMapbox();
+  liveBtn();
+>>>>>>> 041dbc108d24b67bc42e219e2eee5234ac759f68
   initChatroomCable();
+  // initSoundCard();
 });
 initMapbox();

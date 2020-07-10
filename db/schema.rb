@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2020_07_09_065217) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "venue_id", null: false
+    t.string "artist"
+    t.string "genre"
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
