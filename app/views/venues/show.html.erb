@@ -1,14 +1,16 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=cl_image_path @venue.photos[0].key %>)">
   <h2><%= @venue.name %></h2>
   <p><%= @venue.description%></p>
-  <p> Event raitings goes here</p>
-  <p> <%= @venue.events.last.name %></p>
-  <div class="container">
-    <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay
-    src="https%3A//api.soundcloud.com/tracks/293&amp">
-</iframe>
+  <h2> <%= @venue.events.last.name %></h2>
+  <p> <strong>now playing</strong></p>
+  <div class="card-product">
+  <img src=<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>>
+  <div class="card-product-infos">
+    <h2><%= @playlist_data["tracks"]["data"][2]['artist']['name']%></h2>
+    <p><%= @playlist_data["tracks"]["data"][2]['album']['title']%></p>
   </div>
+</div>
+
 </div>
 
 <br>
