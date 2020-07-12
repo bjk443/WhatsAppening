@@ -1,16 +1,19 @@
 // Specific CSS for your home-page
-body {
-  // overflow: hidden;
+.wrap {
+  overflow-x: hidden;
+}
+
+.cards-container {
+  .row {
+    flex-wrap: nowrap;
+    overflow-x: auto !important;
+  }
 }
 .container_orange {
   padding: 30px 10px 40px 10px;
   background-color: #ff7700;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-
-  .row {
-    flex-wrap: nowrap;
-  }
 
   h2 {
     font-weight: 600;
@@ -19,13 +22,20 @@ body {
   }
   .form-control {
     padding: 25px 20px;
-    border-radius: 10px;
+    border-radius: 8px;
   }
   h3 {
     font-weight: 600;
     color: white;
     font-size: 32px;
   }
+}
+
+input.empty {
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
 }
 
 .header-index {
@@ -39,11 +49,18 @@ body {
 
 .filter-tabs {
   margin: 25px 0;
+  li a .active {
+    text-decoration: none;
+    opacity: 1;
+    border-bottom: 2px solid #ff7700;
+  }
   a {
     color: black;
     opacity: 0.3;
+    text-decoration: none;
   }
   .active {
+    text-decoration: none;
     opacity: 1;
     border-bottom: 2px solid #ff7700;
   }
@@ -52,12 +69,12 @@ body {
 // Event card
 
 .event-card {
-  height: 390px;
-  width: 70vw;
-  margin: 0 10px 20px 20px;
+  height: 350px;
+  min-width: 70vw;
+  margin: 0 10px 10px 0;
   border-radius: 23px;
   position: relative;
-  overflow: visible;
+
   .card-trip-infos {
     position: absolute;
     bottom: 35px;
@@ -76,6 +93,27 @@ body {
     color: white;
     margin-bottom: 0;
   }
+}
+
+.go_next {
+  position: absolute;
+  right: 20px;
+  top: 35px;
+  a {
+    padding: 10px 14px;
+    background-color: #ff7700;
+    border-radius: 35px;
+    &:hover {
+      background-color: black;
+    }
+  }
+  i {
+    color: white;
+  }
+}
+
+.event-card:first-child {
+  margin: 0 10px 10px 23px;
 }
 
 .card-trip-infos i {
