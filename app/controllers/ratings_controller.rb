@@ -18,18 +18,6 @@ before_action :find_event, except: [:destroy] #will not find event that does not
         end
     end
 
-    def update
-        @rating = Rating.find(params[:id])
-        @rating.update(rating_params)
-        redirect_to event_path(@rating)
-    end
-
-    def destroy
-        @rating = Rating.find(params[:id])
-        @rating.destroy!
-        redirect_to event_path(@rating.event) #go back to event
-    end
-
     private
 
     def find_event
@@ -37,7 +25,7 @@ before_action :find_event, except: [:destroy] #will not find event that does not
     end
 
     def rating_params
-        params.require(:rating).permit(:test, :stars, :waiting_time, :crowd_level)
+        params.require(:rating).permit(:stars, :waiting_time, :crowd_level)
     end
 end
 

@@ -33,26 +33,14 @@
 
         <div class="modal-body">
           <!-- rating the venue with stars -->
-          <h4 class="modal-title">Rate the venue right now!</h4>
           <div id="venue-rating">
-          <form action=<%="/venues/#{@venue.id}/events/#{@venue.events.last.id}/ratings"%>
-                method="POST">
-            <input type="hidden" name="authenticity_token" value=<%=form_authenticity_token %>>
-            <div id="full-stars">
-                <div class="rating-group">
-                    <input type="text" name="test" placeholder="miguel">
-                    <input checked class="rating__input rating__input--none" name="stars" id="rating3-none" value="0" type="radio">
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="stars" id="rating3-1" value="1" type="radio">
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="stars" id="rating3-2" value="2" type="radio">
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="stars" id="rating3-3" value="3" type="radio">
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="stars" id="rating3-4" value="4" type="radio">
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="stars" id="rating3-5" value="5" type="radio">
-                </div>
+            <div class="row">
+              <div class="col-xs-4">
+                <%= simple_form_for @venue.events.last.ratings do |f| %>
+                  <%=f.input :stars, collection: (1..5).to_a, label: "Rate the venue right now!" %>
+                  <%=f.submit %>
+                <% end %>
+              </div>
             </div>
           </div>
 
@@ -90,10 +78,7 @@
                     <option value="5">30 min + </option>
                   </select>
                 </div>
-              </div>
-              <input type="submit" value="Submit">
-        </form>   
-
+              </div> 
         </div>
 
         <div class="modal-footer">
