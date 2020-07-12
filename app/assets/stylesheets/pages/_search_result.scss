@@ -1,0 +1,65 @@
+.card-1 {
+  height: 150px;
+  width: 160px;
+}
+
+.event-card-search {
+  width: 100vw;
+  margin: 0 15px 15px 15px;
+  border-radius: 15px;
+  position: relative;
+  background-color: white;
+
+  .card-info {
+    padding: 0 10px 0 15px;
+    margin: 0 auto;
+    p {
+      font-size: 12px;
+      margin: 0;
+    }
+    .bold {
+      font-weight: 600;
+      color: black;
+    }
+  }
+  h2 {
+    margin-bottom: 10px;
+    line-height: 15px;
+  }
+  h2 a {
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 0;
+  }
+  h6 {
+    color: black;
+    margin-bottom: 0;
+    font-size: 12px;
+  }
+
+  [aria-hidden="true"] {
+    color: #dedede;
+  }
+}
+
+.small_count {
+  color: black;
+  opacity: 0.8;
+  font-size: 0.8rem;
+}
+
+.image_search {
+  border-radius: 15px 0 0 15px;
+}
+
+.crowd_level {
+  i {
+    font-size: 8px;
+    margin: 0 -1px;
+  }
+}
+
+.capacity {
+  display: flex;
+}
