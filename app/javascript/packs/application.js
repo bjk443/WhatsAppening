@@ -29,7 +29,7 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { initMapbox } from '../plugins/init_mapbox';
-// import { initSoundCard } from '../channels/live_music_card';
+import { initSoundCard } from '../channels/live_music_card';
 import { liveBtn } from '../channels/live_button';
 
 document.addEventListener('turbolinks:load', () => {
@@ -38,6 +38,6 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   liveBtn();
   initChatroomCable();
-  // initSoundCard();
+  initSoundCard();
 });
 initMapbox();
