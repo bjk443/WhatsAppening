@@ -110,72 +110,48 @@ Rating.create!(
   comment: "Did you hear that DJ?",
   crowd_level: 6,
   waiting_time: "30 min",
-  event: event_1
+  event: event_1,
+  user: user_1
 )
 Rating.create!(
   stars: 5,
   comment: "Did you hear that DJ?",
   crowd_level: 8,
   waiting_time: "15 min",
-  event: event_1
+  event: event_1,
+  user: user_2
 )
 Rating.create!(
   stars: 3,
   comment: "A night to remember!",
   crowd_level: 10,
   waiting_time: "45 min",
-  event: event_2
+  event: event_2,
+  user: user_3
 )
 Rating.create!(
   stars: 1,
   comment: "What a waste of my time!",
   crowd_level: 3,
   waiting_time: "30 min +",
-  event: event_2
+  event: event_2,
+  user: user_1
 )
 Rating.create!(
   stars: 2,
   comment: "A night to remember!",
   crowd_level: 10,
   waiting_time: "no wait",
-  event: event_3
+  event: event_3,
+  user: user_2
 )
 Rating.create!(
   stars: 0,
   comment: "What a waste of my time!",
   crowd_level: 3,
   waiting_time: "10 min",
-  event: event_3
-)
-
-Rating.create!(
-  stars: 5,
-  comment: "A night to remember!",
-  crowd_level: 10,
-  waiting_time: "10 min",
-  event: event_3
-)
-Rating.create!(
-  stars: 3,
-  comment: "What a waste of my time!",
-  crowd_level: 7,
-  waiting_time: "5 min",
-  event: event_3
-)
-
-Rating.create!(
-  stars: 1,
-  comment: "A night to remember!",
-  crowd_level: 5,
-  waiting_time: "30 min",
-  event: event_3
-)
-Rating.create!(
-  stars: 4,
-  comment: "What a waste of my time!",
-  crowd_level: 2,
-  waiting_time: "30 min +",
-  event: event_3
+  event: event_3,
+  user: user_3
 )
 
 puts "Attaching pictures for venues..."

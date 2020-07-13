@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_09_065217) do
+ActiveRecord::Schema.define(version: 2020_07_12_110943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_07_09_065217) do
     t.bigint "venue_id", null: false
     t.string "artist"
     t.string "genre"
+    t.string "playlist_id"
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
@@ -87,7 +88,9 @@ ActiveRecord::Schema.define(version: 2020_07_09_065217) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "waiting_time"
+    t.bigint "user_id"
     t.index ["event_id"], name: "index_ratings_on_event_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

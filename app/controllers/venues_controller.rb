@@ -24,7 +24,11 @@ class VenuesController < ApplicationController
   def show
     @venue = Venue.find(params[:id])
     @chatroom = @venue.chatroom
-    @message = Message.new
+    @message = Message.new  
+    @rating = Rating.new
+    
+    
+
   end
 
   def new
