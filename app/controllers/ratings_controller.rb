@@ -20,7 +20,8 @@ before_action :find_event, except: [:destroy] #will not find event that does not
         @venue = @event.venue
         @rating.user = current_user
         if @rating.save
-        redirect_to venue_path(@venue)
+          flash[:notice] = "Thanks for your real-time review!"
+          redirect_to venue_path(@venue)
         else
         render :new #renders instance of new that failed to save (still in /ratings)
         end

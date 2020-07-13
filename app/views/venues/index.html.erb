@@ -2,7 +2,6 @@
 
 
 <div class="wrap">
-
 <!-- container for orange background -->
 <% if @search_query.nil? || @search_query.empty? %>
 <div class="container_orange orange">
@@ -41,9 +40,9 @@
         <a><i class='fas fa-chevron-right'></i></a>
       </div>
       <div class="card-trip-infos">
-        <h2><%= link_to venue.name, venue_path(venue) %></h2>
+        <h2><%= link_to venue.name, venue_path(venue), data: { turbolinks: false} %></h2>
         <h6><%= venue.events.last.name %></h6>
-        <% full_stars = venue.events.last.average_rating.round %>
+        <% full_stars = venue.events.last.average_rating %>
         <% empty_stars = 5 - full_stars %>
 
         <% full_stars.times do %>
@@ -53,7 +52,6 @@
         <% empty_stars.times do %>
           <i class="fa fa-star" aria-hidden="true"></i>
         <% end %>
-
          (<%= venue.events.last.ratings.count %>)
       </div>
     </div>
@@ -99,30 +97,6 @@
   <div class="row">
     <% @venues_search.each do |venue|%>
     <% if venue.events != nil %>
-<!--     <div class="event-card-search">
-      <div class="image">
-        <%#= cl_image_tag venue.photos[0].key, height:220, crop: :fill, class: "image_search w-100" %>
-      </div>
-      <div class="card-trip-infos">
-        <h2><%#= link_to venue.name, venue_path(venue) %></h2>
-        <h6><%#= venue.events.last.name %></h6>
-        <div class="star_area d-flex align-items-center">
-          <%# full_stars = venue.events.last.average_rating.round %>
-          <%# empty_stars = 5 - full_stars %>
-
-          <%# full_stars.times do %>
-            <i class="fa fa-star orange" aria-hidden="true"></i>
-          <%# end %>
-
-          <%# empty_stars.times do %>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          <%# end %>
-          <div class="small_count ml-1">
-           (<%= venue.events.last.ratings.count %>)
-          </div>
-        </div>
-      </div>
-    </div> -->
       <div class="event-card-search d-flex align-items-center">
         <div class="card-1">
           <%= cl_image_tag venue.photos[0].key, height:150, crop: :fill, class: "image_search w-100" %>
@@ -131,6 +105,18 @@
           <h2><%= link_to venue.name, venue_path(venue) %></h2>
           <h6><%= venue.events.last.name %></h6>
           <div class="capacity align-items-center">
+            <% full_stars = venue.events.last.average_rating %>
+            <% empty_stars = 5 - full_stars %>
+
+            <% full_stars.times do %>
+            <i class="fa fa-star orange" aria-hidden="true"></i>
+            <% end %>
+            <% empty_stars.times do %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <% end %>
+          </div>
+          <div class="capacity align-items-center">
+
             <p> Capacity:</p>
             <p class="bold">&nbsp;<%= venue.capacity %></p>
           </div>

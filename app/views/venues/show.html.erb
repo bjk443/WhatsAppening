@@ -1,5 +1,4 @@
 <div class="wrap-show-first">
-
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url(<%=cl_image_path @venue.photos[0].key %>)">
     <%= link_to :back do %>
     <div class="back-btn">
@@ -8,17 +7,38 @@
     <% end %>
     <h1><%= @venue.name %></h1>
     <p><%= @venue.description%></p>
+
+    <div class="card-rating-display">
+    <% full_stars = @venue.events.last.average_rating %>
+    <% empty_stars = 5 - full_stars %>
+
+    <p><% full_stars.times do %>
+      <i class="fa fa-star orange" aria-hidden="true"></i>
+    <% end %>
+
+    <% empty_stars.times do %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    <% end %>
+      (<%= @venue.events.last.ratings.count %>)</p>
+    </div>
     <p class="mt-2"> <strong>Now playing</strong></p>
+
     <div class="card-product mt-3">
-      <img src=<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>>
+      <div id="album" style="background-image: url(<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>)">
+        <audio id="mySong">
+          <source src="https://cdns-preview-d.dzcdn.net/stream/c-deda7fa9316d9e9e880d2c6207e92260-8.mp3" type="audio/mpeg">
+        </audio>
+        <i class="fa fa-play" aria-hidden="true"></i>
+        <i class="fa fa-pause" style="display: none" aria-hidden="true"></i>
+      </div>
       <div class="card-product-infos">
         <h2><%= @playlist_data["tracks"]["data"][2]['artist']['name']%></h2>
-        <p><%= @playlist_data["tracks"]["data"][2]['album']['title']%></p>
+        <% artist = @playlist_data["tracks"]["data"][2]['artist']['name'] %>
+        <% song = @playlist_data["tracks"]["data"][2]['title_short'] %>
+        <marquee> <strong>Now playing</strong> - <%= artist %> - <%= song %> </marquee>
       </div>
     </div>
-
   </div>
-
 </div>
 
 <div class="wrap-show pt-5">
@@ -30,6 +50,31 @@
     </div>
   </div>
 </div>
+
+    <div class="capacity align-items-center">
+      <i class="far fa-clock orange"></i>
+      <p> Waiting Time:</p>
+      <p class="bold">&nbsp;<%= @venue.events.last.waiting_time_now %> </p>
+    </div>
+    <div class="capacity">
+      <i class="far fa-user orange"></i>
+      <p> Capacity: 0 - </p>
+      <p class="bold">&nbsp;<%= @venue.capacity %> PAX</p>
+      <% crowded = @venue.events.last.average_crowded_level.round %>
+      <% uncrowded = 10 - @venue.events.last.average_crowded_level.round %>
+    </div>
+    <div class="progress">
+      <div class="progress-bar bg-danger" role="progressbar" style="width: <%= crowded*10%>%" aria-valuenow="<%= crowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+      <div class="progress-bar bg-success" role="progressbar" style="width: <%= uncrowded*10%>%" aria-valuenow="<%= uncrowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+    </div>
+    <div class="category">
+      <i class="fas fa-globe-americas orange"></i>
+      <p> Category: <%=@venue.category %></p>
+    </div>
+
+
+
+
 
     <div class="btn-show btn btn-primary w-95" data-venue="<%= @venue.id %>" data-toggle="modal" data-target="#myModal">GO LIVE</div>
 
@@ -67,26 +112,27 @@
             </div>
           </div>
 
-
-
           <!-- slider for choosing crowded level-->
           <h4 class="modal-title">how crowded is the place?</h4>
           <div class=d-flex>
           <p>not crowded</p>
+
             <input type="range" name="crowd_level" min="0" max="50" value="25" id="fader"
               step="10" list="volsettings"> <p>very crowded</p>
             <datalist id="volsettings">
               <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
               <option>10</option>
-              <option>20</option>
-              <option>30</option>
-              <option>40</option>
-              <option>50</option>
             </datalist>
             </div>
-
-
-
           <!-- slider for choosing waiting time-->
           <h4 class="modal-title">how long did you wait?</h4>
               <div class="form-row align-items-center">
@@ -94,12 +140,12 @@
                   <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                   <select name="waiting_time" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Choose...</option>
-                    <option value="1">no wait</option>
-                    <option value="2">5 min</option>
-                    <option value="3">10 min</option>
-                    <option value="4">15 min</option>
-                    <option value="5">30 min</option>
-                    <option value="5">30 min + </option>
+                    <option value="no wait">no wait</option>
+                    <option value="5 min">5 min</option>
+                    <option value="10 min">10 min</option>
+                    <option value="15 min">15 min</option>
+                    <option value="30 min">30 min</option>
+                    <option value="30 min+">30 min + </option>
                   </select>
                 </div>
               </div>
@@ -115,6 +161,10 @@
       </div>
       </div>
 
+
+
+
+
     <div class="message-area">
       <%= simple_form_for [ @venue, @message ], remote: true do |f| %>
       <div class="input d-flex align-items-center">
@@ -128,3 +178,4 @@
     </div>
   </div>
 </div>
+

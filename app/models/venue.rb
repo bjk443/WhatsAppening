@@ -12,4 +12,12 @@ class Venue < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  # def messaging_user_avatar
+  #   # write a query to get all the messages posted
+  #   if self.chatrooms.messages.count == 0
+  #     return 0
+  #   else
+  #     self.chatrooms.messages
+  #   end
 end
