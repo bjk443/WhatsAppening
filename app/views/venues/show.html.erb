@@ -1,5 +1,4 @@
 <div class="wrap-show-first">
-
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url(<%=cl_image_path @venue.photos[0].key %>)">
     <%= link_to :back do %>
     <div class="back-btn">
@@ -8,17 +7,23 @@
     <% end %>
     <h1><%= @venue.name %></h1>
     <p><%= @venue.description%></p>
-    <p class="mt-2"> <strong>Now playing</strong></p>
+    <p class="mt-2"> </p>
     <div class="card-product mt-3">
-      <img src=<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>>
+      <div id="album" style="background-image: url(<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>)">
+        <audio id="mySong">
+          <source src="https://cdns-preview-d.dzcdn.net/stream/c-deda7fa9316d9e9e880d2c6207e92260-8.mp3" type="audio/mpeg">
+        </audio>
+        <i class="fa fa-play" aria-hidden="true"></i>
+        <i class="fa fa-pause" style="display: none" aria-hidden="true"></i>
+      </div>
       <div class="card-product-infos">
         <h2><%= @playlist_data["tracks"]["data"][2]['artist']['name']%></h2>
-        <p><%= @playlist_data["tracks"]["data"][2]['album']['title']%></p>
+        <% artist = @playlist_data["tracks"]["data"][2]['artist']['name'] %>
+        <% song = @playlist_data["tracks"]["data"][2]['title_short'] %>
+        <marquee> <strong>Now playing</strong> - <%= artist %> - <%= song %> </marquee>
       </div>
     </div>
-
   </div>
-
 </div>
 
  <div class="wrap-show pt-5">
@@ -75,17 +80,17 @@
                     <input class="rating__input" name="stars" id="rating3-4" value=4 type="radio">
                     <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                     <input class="rating__input" name="stars" id="rating3-5" value=5 type="radio">
-                </div>        
+                </div>
             </div>
           </div>
-          
+
 
 
           <!-- slider for choosing crowded level-->
           <h4 class="modal-title">how crowded is the place?</h4>
           <div class=d-flex>
           <p>not crowded</p>
-            <input type="range" name="crowd_level" min="0" max="50" value="25" id="fader" 
+            <input type="range" name="crowd_level" min="0" max="50" value="25" id="fader"
               step="10" list="volsettings"> <p>very crowded</p>
             <datalist id="volsettings">
               <option>0</option>
@@ -96,7 +101,7 @@
               <option>50</option>
             </datalist>
             </div>
-          
+
 
 
           <!-- slider for choosing waiting time-->
@@ -116,7 +121,7 @@
                 </div>
               </div>
               <input type="submit" value="Submit">
-        </form>   
+        </form>
 
         </div>
 
