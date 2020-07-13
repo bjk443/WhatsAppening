@@ -111,29 +111,13 @@
                 </div>
             </div>
           </div>
-
           <!-- slider for choosing crowded level-->
           <h4 class="modal-title">how crowded is the place?</h4>
           <div class=d-flex>
-          <p>not crowded</p>
-
-            <input type="range" name="crowd_level" min="0" max="50" value="25" id="fader"
-              step="10" list="volsettings"> <p>very crowded</p>
-            <datalist id="volsettings">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </datalist>
-            </div>
-
+              <p>not crowded</p>
+            <input type="range" name="crowd_level" min="0" max="10" value="5" id="fader"
+              step="1" list="volsettings">
+              <p>very crowded</p>
           <!-- slider for choosing waiting time-->
           <h4 class="modal-title">how long did you wait?</h4>
               <div class="form-row align-items-center">
@@ -161,7 +145,6 @@
         </div>
       </div>
       </div>
-
 
 
 
