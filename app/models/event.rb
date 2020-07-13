@@ -29,7 +29,7 @@ class Event < ApplicationRecord
     if self.ratings.count == 0
       return 0
     else
-      waiting_time_now = 0
+      waiting_time_now = ""
       waiting_time_now = self.ratings.last.waiting_time
     end
 

@@ -33,6 +33,12 @@
   font-weight: 500;
   padding: 0 30px;
 }
+
+.card-rating-display p {
+  margin-top: 5px;
+  text-align: center;
+}
+
 .avatar-map {
   width: 30px !important;
   border-radius: 50px;
@@ -54,10 +60,14 @@
   align-items: center;
 }
 
-.card-product img {
+.card-product #album {
   height: 100%;
   width: 120px;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-product h2 {
