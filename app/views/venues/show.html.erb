@@ -13,10 +13,11 @@
     </div>
     <div class="card-product-infos">
       <h2><%= @playlist_data["tracks"]["data"][2]['artist']['name']%></h2>
-      <p><%= @playlist_data["tracks"]["data"][2]['album']['title']%></p>
+      <% artist = @playlist_data["tracks"]["data"][2]['artist']['name'] %>
+      <% song = @playlist_data["tracks"]["data"][2]['title_short'] %>
+      <marquee><%= artist + "-" + song %></marquee>
     </div>
   </div>
-
 </div>
 
 <br>
