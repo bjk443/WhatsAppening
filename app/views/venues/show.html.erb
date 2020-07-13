@@ -8,6 +8,19 @@
     <% end %>
     <h1><%= @venue.name %></h1>
     <p><%= @venue.description%></p>
+    <div class="card-rating-display">
+    <% full_stars = @venue.events.last.average_rating %>
+    <% empty_stars = 5 - full_stars %>
+
+    <p><% full_stars.times do %>
+      <i class="fa fa-star orange" aria-hidden="true"></i>
+    <% end %>
+
+    <% empty_stars.times do %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    <% end %>
+      (<%= @venue.events.last.ratings.count %>)</p>
+    </div>
     <p class="mt-2"> <strong>Now playing</strong></p>
     <div class="card-product mt-3">
       <img src=<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>>
@@ -28,6 +41,31 @@
         <%= render 'messages/message', message: message %>
       <% end %>
     </div>
+
+    <div class="capacity align-items-center">
+      <i class="far fa-clock orange"></i>
+      <p> Waiting Time:</p>
+      <p class="bold">&nbsp;<%= @venue.events.last.waiting_time_now %> </p>
+    </div>
+    <div class="capacity">
+      <i class="far fa-user orange"></i>
+      <p> Capacity: 0 - </p>
+      <p class="bold">&nbsp;<%= @venue.capacity %> PAX</p>
+      <% crowded = @venue.events.last.average_crowded_level.round %>
+      <% uncrowded = 10 - @venue.events.last.average_crowded_level.round %>
+    </div>
+    <div class="progress">         
+      <div class="progress-bar bg-danger" role="progressbar" style="width: <%= crowded*10%>%" aria-valuenow="<%= crowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+      <div class="progress-bar bg-success" role="progressbar" style="width: <%= uncrowded*10%>%" aria-valuenow="<%= uncrowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+    </div>
+    <div class="category">
+      <i class="fas fa-globe-americas orange"></i>
+      <p> Category: <%=@venue.category %></p>
+    </div>
+
+
+  
+
 
     <div class="btn-show btn btn-primary w-95" data-venue="<%= @venue.id %>" data-toggle="modal" data-target="#myModal">GO LIVE</div>
 
@@ -112,6 +150,10 @@
         </div>
       </div>
 
+
+    
+    
+
     <div class="message-area">
       <%= simple_form_for [ @venue, @message ], remote: true do |f| %>
       <div class="input d-flex align-items-center">
@@ -122,3 +164,4 @@
     </div>
   </div>
 </div>
+

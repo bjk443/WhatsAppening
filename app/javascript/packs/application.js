@@ -34,7 +34,6 @@ import { liveBtn } from '../channels/live_button';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  console.log("I am loading turbolinks")
   // initSelect2();
   initMapbox();
   liveBtn();
