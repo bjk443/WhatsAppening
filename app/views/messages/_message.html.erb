@@ -1,7 +1,10 @@
 <div class="message-container" id="message-<%= message.id %>">
-  <i class="author">
-    <span><%= message.user.name %></span>
-    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-  </i>
-  <p><%= message.content %></p>
+  <div class="message-column d-flex justify-content-between align-items-center">
+    <div class="image mr-3">
+      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    </div>
+
+    <p class="flex-grow-1"><%= message.content %></p>
+      <a><%= message.created_at.strftime("%l:%M%p") %></a>
+  </div>
 </div>

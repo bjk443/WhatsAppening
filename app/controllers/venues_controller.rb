@@ -1,5 +1,4 @@
 class VenuesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :check_owner, only: [:edit]
 
   def index
