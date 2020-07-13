@@ -4,7 +4,13 @@
   <h2> <%= @venue.events.last.name %></h2>
   <p> <strong>now playing</strong></p>
   <div class="card-product mt-3">
-    <img src=<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>>
+    <div id="album" style="background-image: url(<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>)">
+      <audio id="mySong">
+        <source src="https://cdns-preview-d.dzcdn.net/stream/c-deda7fa9316d9e9e880d2c6207e92260-8.mp3" type="audio/mpeg">
+      </audio>
+      <i class="fa fa-play" aria-hidden="true"></i>
+      <i class="fa fa-pause" style="display: none" aria-hidden="true"></i>
+    </div>
     <div class="card-product-infos">
       <h2><%= @playlist_data["tracks"]["data"][2]['artist']['name']%></h2>
       <p><%= @playlist_data["tracks"]["data"][2]['album']['title']%></p>
