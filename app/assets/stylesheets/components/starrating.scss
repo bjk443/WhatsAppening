@@ -1,4 +1,15 @@
-
+/*  
+ *  Pure CSS star rating that works without reversing order
+ *  of inputs
+ *  -------------------------------------------------------
+ *  NOTE: For the styling to work, there needs to be a radio
+ *        input selected by default. There also needs to be a
+ *        radio input before the first star, regardless of
+ *        whether you offer a 'no rating' or 0 stars option
+ *  
+ *  This codepen uses FontAwesome icons
+ */
+  
   #full-stars {
   
     /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
@@ -49,10 +60,3 @@
       color: #ddd;
     }
   }
-  
-  
-  body {
-    padding: 1rem;
-    text-align: center;
-  }
-  

@@ -8,6 +8,19 @@
     <% end %>
     <h1><%= @venue.name %></h1>
     <p><%= @venue.description%></p>
+    <div class="card-rating-display">
+    <% full_stars = @venue.events.last.average_rating %>
+    <% empty_stars = 5 - full_stars %>
+
+    <p><% full_stars.times do %>
+      <i class="fa fa-star orange" aria-hidden="true"></i>
+    <% end %>
+
+    <% empty_stars.times do %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    <% end %>
+      (<%= @venue.events.last.ratings.count %>)</p>
+    </div>
     <p class="mt-2"> <strong>Now playing</strong></p>
     <div class="card-product mt-3">
       <img src=<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>>
@@ -29,24 +42,35 @@
       <% end %>
     </div>
 
+    <div class="capacity align-items-center">
+      <i class="far fa-clock orange"></i>
+      <p> Waiting Time:</p>
+      <p class="bold">&nbsp;<%= @venue.events.last.waiting_time_now %> </p>
+    </div>
+    <div class="capacity">
+      <i class="far fa-user orange"></i>
+      <p> Capacity: 0 - </p>
+      <p class="bold">&nbsp;<%= @venue.capacity %> PAX</p>
+      <% crowded = @venue.events.last.average_crowded_level.round %>
+      <% uncrowded = 10 - @venue.events.last.average_crowded_level.round %>
+    </div>
+    <div class="progress">         
+      <div class="progress-bar bg-danger" role="progressbar" style="width: <%= crowded*10%>%" aria-valuenow="<%= crowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+      <div class="progress-bar bg-success" role="progressbar" style="width: <%= uncrowded*10%>%" aria-valuenow="<%= uncrowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+    </div>
+    <div class="category">
+      <i class="fas fa-globe-americas orange"></i>
+      <p> Category: <%=@venue.category %></p>
+    </div>
+
+
+  
+
+
     <div class="btn-show btn btn-primary w-95" data-venue="<%= @venue.id %>" data-toggle="modal" data-target="#myModal">GO LIVE</div>
 
       <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">how crowded is the place?</h4>
-            </div>
-            <div class="modal-body">
-              <p>1, 2, 3, 4, 5, 6, 7, 8, 9, 10</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
 
       <!-- Modal content-->
       <div class="modal-content">
@@ -79,26 +103,27 @@
             </div>
           </div>
           
-
-
           <!-- slider for choosing crowded level-->
           <h4 class="modal-title">how crowded is the place?</h4>
           <div class=d-flex>
           <p>not crowded</p>
-            <input type="range" name="crowd_level" min="0" max="50" value="25" id="fader" 
-              step="10" list="volsettings"> <p>very crowded</p>
+            <input type="range" name="crowd_level" min="0" max="10" value="5" id="fader" 
+              step="1" list="volsettings"> <p>very crowded</p>
             <datalist id="volsettings">
               <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
               <option>10</option>
-              <option>20</option>
-              <option>30</option>
-              <option>40</option>
-              <option>50</option>
             </datalist>
             </div>
           
-
-
           <!-- slider for choosing waiting time-->
           <h4 class="modal-title">how long did you wait?</h4>
               <div class="form-row align-items-center">
@@ -106,12 +131,12 @@
                   <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                   <select name="waiting_time" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Choose...</option>
-                    <option value="1">no wait</option>
-                    <option value="2">5 min</option>
-                    <option value="3">10 min</option>
-                    <option value="4">15 min</option>
-                    <option value="5">30 min</option>
-                    <option value="5">30 min + </option>
+                    <option value="no wait">no wait</option>
+                    <option value="5 min">5 min</option>
+                    <option value="10 min">10 min</option>
+                    <option value="15 min">15 min</option>
+                    <option value="30 min">30 min</option>
+                    <option value="30 min+">30 min + </option>
                   </select>
                 </div>
               </div>
@@ -122,9 +147,12 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
->>>>>>> 70bdfa75dbdfdfddcfa03fc0dd8380cd8a3f3b52
         </div>
       </div>
+
+
+    
+    
 
     <div class="message-area">
       <%= simple_form_for [ @venue, @message ], remote: true do |f| %>
@@ -136,3 +164,4 @@
     </div>
   </div>
 </div>
+
