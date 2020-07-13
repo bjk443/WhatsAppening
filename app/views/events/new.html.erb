@@ -1,0 +1,26 @@
+<div class="container_orange_login orange">
+  <div class="container header-index">
+      <h3>Create event for your venue!</h3>
+  </div>
+</div>
+
+<div class="container">
+
+<%= simple_form_for [@venue, @event] do |f| %>
+
+  <div class="form-inputs">
+    <div class="name_input-event">
+      <%= f.input :name, class: "name_input-event" %>
+    </div>
+    <div class="time_input-event">
+      <%= f.input :start_time %>
+      <%= f.input :end_time %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Create", class: "btn btn-primary w-100 mt-3 mb-2" %>
+  </div>
+
+<% end %>
+</div>

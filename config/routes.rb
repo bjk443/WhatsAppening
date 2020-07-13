@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :chatrooms, only: :show
     resources :messages, only: :create
   end
+    get "/my_venues", to: "venues#my_venues"
 end

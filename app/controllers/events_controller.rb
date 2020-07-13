@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :check_owner, only: [:edit]
 
   def index
@@ -21,10 +20,15 @@ class EventsController < ApplicationController
   end
 
   def create
+    @venue = Venue.find(params[:venue_id])
     @event = Event.new(event_params)
-    @event.user_id = current_user.id
-    @event.save
-    # redirect_to event_path(@event)
+    @event.venue_id = @venue
+
+    if @event.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -46,7 +50,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :description, :address, :capacity, :event_rating)
+    params.require(:event).permit(:name, :start_time, :end_time, :waiting_time)
   end
 
   def check_owner

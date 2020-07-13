@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_one :user, through: :venue
   has_many :ratings
   belongs_to :venue
   def average_rating
