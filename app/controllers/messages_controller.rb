@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     @message.chatroom = @chatroom
     @message.user = current_user
     # @message.save
-    if @message.content != ""
+    unless @message.content == "" && !@message.photo.attached?
       @message.save
       ChatroomChannel.broadcast_to(@chatroom, render_to_string(partial: "message", locals: { message: @message }))
       redirect_to venue_path(@venue, anchor: "message-#{@message.id}")
@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :photo)
   end
 
 end

@@ -1,4 +1,5 @@
 import mapboxgl from 'mapbox-gl';
+import { mapTab } from './map_tab';
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -20,6 +21,10 @@ const initMapbox = () => {
         .addTo(map);
     });
     fitMapToMarkers(map, markers);
+    mapTab(map);
+    // setTimeout(()=>{
+    //   map.resize()
+    // },1000)
   }
 };
 
