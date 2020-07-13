@@ -7,7 +7,7 @@
     <% end %>
     <h1><%= @venue.name %></h1>
     <p><%= @venue.description%></p>
-    <p class="mt-2"> <strong>Now playing</strong></p>
+    <p class="mt-2"> </p>
     <div class="card-product mt-3">
       <div id="album" style="background-image: url(<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>)">
         <audio id="mySong">
@@ -20,7 +20,7 @@
         <h2><%= @playlist_data["tracks"]["data"][2]['artist']['name']%></h2>
         <% artist = @playlist_data["tracks"]["data"][2]['artist']['name'] %>
         <% song = @playlist_data["tracks"]["data"][2]['title_short'] %>
-        <marquee><%= artist + "-" + song %></marquee>
+        <marquee> <strong>Now playing</strong> - <%= artist %> - <%= song %> </marquee>
       </div>
     </div>
   </div>
