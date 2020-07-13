@@ -1,0 +1,64 @@
+.container_orange_login {
+  padding: 105px 10px 105px 10px;
+  background-color: #ff7700;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  margin-bottom: 20px;
+  h2 {
+    font-weight: 600;
+    color: white;
+    font-size: 41px;
+  }
+  .form-control {
+    padding: 25px 20px;
+    border-radius: 8px;
+  }
+  h3 {
+    text-align: center;
+
+    font-weight: 800;
+    color: white;
+    font-size: 37px;
+  }
+}
+
+.login-form {
+  padding: 10px 25px 0 25px;
+  .form-control {
+    padding: 28px 30px;
+    border-radius: 10px;
+  }
+  .form-check-label {
+    font-size: 14px;
+    color: #7d7d7d;
+  }
+  .btn {
+    border-radius: 10px;
+    padding: 14px 30px;
+  }
+}
+.forgot_password_container {
+  text-align: center;
+  .forgot_password {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #7d7d7d;
+  }
+}
+.or_section {
+  margin-top: 20px;
+  p {
+    margin: 0 10px;
+    color: #a6a6a6;
+  }
+  .hline {
+    width: 45%;
+    height: 1px;
+    background: #cccccc;
+    opacity: 0.7;
+  }
+}
+
+abbr[title] {
+  display: none;
+}
