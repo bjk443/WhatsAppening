@@ -42,6 +42,28 @@
 </div>
 
 <div class="wrap-show pt-5">
+    <div class="container">
+          <div class="capacity align-items-center">
+        <i class="far fa-clock orange"></i>
+        <p> Waiting Time:</p>
+        <p class="bold">&nbsp;<%= @venue.events.last.waiting_time_now %> </p>
+      </div>
+      <div class="capacity">
+        <i class="far fa-user orange"></i>
+        <p> Capacity: 0 - </p>
+        <p class="bold">&nbsp;<%= @venue.capacity %> PAX</p>
+        <% crowded = @venue.events.last.average_crowded_level.round %>
+        <% uncrowded = 10 - @venue.events.last.average_crowded_level.round %>
+      </div>
+      <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: <%= crowded*10%>%" aria-valuenow="<%= crowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: <%= uncrowded*10%>%" aria-valuenow="<%= uncrowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+      </div>
+      <div class="category">
+        <i class="fas fa-globe-americas orange"></i>
+        <p> Category: <%=@venue.category %></p>
+      </div>
+    </div>
   <div class="container msg-scroll">
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
       <% @chatroom.messages.each do |message| %>
@@ -51,26 +73,6 @@
   </div>
 </div>
 
-    <div class="capacity align-items-center">
-      <i class="far fa-clock orange"></i>
-      <p> Waiting Time:</p>
-      <p class="bold">&nbsp;<%= @venue.events.last.waiting_time_now %> </p>
-    </div>
-    <div class="capacity">
-      <i class="far fa-user orange"></i>
-      <p> Capacity: 0 - </p>
-      <p class="bold">&nbsp;<%= @venue.capacity %> PAX</p>
-      <% crowded = @venue.events.last.average_crowded_level.round %>
-      <% uncrowded = 10 - @venue.events.last.average_crowded_level.round %>
-    </div>
-    <div class="progress">
-      <div class="progress-bar bg-danger" role="progressbar" style="width: <%= crowded*10%>%" aria-valuenow="<%= crowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
-      <div class="progress-bar bg-success" role="progressbar" style="width: <%= uncrowded*10%>%" aria-valuenow="<%= uncrowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
-    </div>
-    <div class="category">
-      <i class="fas fa-globe-americas orange"></i>
-      <p> Category: <%=@venue.category %></p>
-    </div>
 
 
 
@@ -118,6 +120,8 @@
             <input type="range" name="crowd_level" min="0" max="10" value="5" id="fader"
               step="1" list="volsettings">
               <p>very crowded</p>
+
+          </div>
           <!-- slider for choosing waiting time-->
           <h4 class="modal-title">how long did you wait?</h4>
               <div class="form-row align-items-center">
@@ -143,6 +147,8 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
+      </div>
+      </div>
       </div>
       </div>
 
