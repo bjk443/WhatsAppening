@@ -86,14 +86,14 @@
 .input {
   margin-left: 10px;
   .form-control {
-    width: 75vw !important;
+    width: 55vw !important;
     height: 50px;
     border-radius: 10px 0 0 10px;
   }
   .btn {
     margin-top: -16px;
     font-size: 14px;
-    padding: 15px 20px;
+    padding: 14px 20px;
     border-radius: 0 10px 10px 0;
   }
 }
@@ -147,4 +147,28 @@
   i {
     font-size: 25px;
   }
+}
+
+.photo-icon {
+  content: "\f196";
+  font: normal normal normal 20px/1 FontAwesome;
+  color: #778899;
+  .photo-btn {
+    display: none;
+  }
+}
+
+.upload-photo {
+  border-top: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+  padding: 14px 24px;
+  cursor: pointer;
+  margin: 0;
+  // font-weight: 500;
+  background: white;
+  border-radius: 2px;
+}
+
+.upload-photo::after {
+  display: none;
 }
