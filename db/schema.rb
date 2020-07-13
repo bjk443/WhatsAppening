@@ -88,7 +88,9 @@ ActiveRecord::Schema.define(version: 2020_07_13_022549) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "waiting_time"
+    t.bigint "user_id"
     t.index ["event_id"], name: "index_ratings_on_event_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
