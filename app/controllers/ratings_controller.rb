@@ -1,44 +1,39 @@
 class RatingsController < ApplicationController
 before_action :find_event, except: [:destroy] #will not find event that does not exist
     def new
-        @rating = rating.new
+        @event = Event.find(params[:event_id])
+        @rating = Rating.new
     end
 
     def edit
-        @rating = rating.find(params[:id])
+        @rating = Rating.find(params[:id])
     end
 
     def create
-        @rating = rating.new(rating_params)
-        @rating.save
+        rating_params
+        @rating = Rating.new(stars: params[:stars],
+                             crowd_level: params[:crowd_level],
+                             waiting_time: params[:waiting_time]
+                             )
+        @event = Event.find(params[:event_id])
         @rating.event = @event
+        @venue = @event.venue
+        @rating.user = current_user
         if @rating.save
-        redirect_to event_path(@event)
+        redirect_to venue_path(@venue)
         else
         render :new #renders instance of new that failed to save (still in /ratings)
         end
     end
 
-    def update
-        @rating = rating.find(params[:id])
-        @rating.update(rating_params)
-        redirect_to event_path(@rating)
-    end
-
-    def destroy
-        @rating = rating.find(params[:id])
-        @rating.destroy!
-        redirect_to event_path(@rating.event) #go back to event
-    end
-
     private
 
     def find_event
-        @event = event.find(params[:event_id])
+        @event = Event.find(params[:event_id])
     end
 
     def rating_params
-        params.require(:rating).permit(:content, :rating)
+        params.permit!
     end
 end
 

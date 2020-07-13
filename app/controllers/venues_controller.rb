@@ -28,7 +28,11 @@ class VenuesController < ApplicationController
     # @venue_playlist_info
     @playlist_data = HTTParty.get(base_url + @venue.events.first.playlist_id)
     @chatroom = @venue.chatroom
-    @message = Message.new
+    @message = Message.new  
+    @rating = Rating.new
+    
+    
+
   end
 
   def new
