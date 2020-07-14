@@ -25,6 +25,14 @@ const initMapbox = () => {
     // setTimeout(()=>{
     //   map.resize()
     // },1000)
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+      })
+    );
   }
 };
 
@@ -34,6 +42,4 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 30, maxZoom: 15, duration: 0 });
 };
 
-
-
-export { initMapbox }
+export { initMapbox };
