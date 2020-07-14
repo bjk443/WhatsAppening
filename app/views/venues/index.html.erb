@@ -51,8 +51,7 @@
 
         <% empty_stars.times do %>
           <i class="fa fa-star" aria-hidden="true"></i>
-        <% end %>
-         (<%= venue.events.last.ratings.count %>)
+        <% end %> <h6>(<%= venue.events.last.ratings.count %>)</h6>
       </div>
     </div>
 
