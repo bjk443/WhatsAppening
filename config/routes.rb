@@ -9,4 +9,5 @@ Rails.application.routes.draw do
       resources :ratings, only: :create
     end
   end
+    get "/my_venues", to: "venues#my_venues"
 end
