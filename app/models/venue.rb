@@ -1,8 +1,8 @@
 class Venue < ApplicationRecord
   belongs_to :user
   has_many_attached :photos
-  has_many :events
-  has_one :chatroom
+  has_many :events, dependent: :destroy
+  has_one :chatroom, dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -15,8 +15,8 @@ class Venue < ApplicationRecord
 
   def messaging_user_avatars
     @messages = self.chatroom.messages
-                            .where(user: 'normal_user')
                             .reorder('created_at DESC')
                             .limit(3)
-    avatar_photo_set = @messages.map { |m| m.user.profile_photo }
+    @messages.map { |m| m.user }.uniq.map { |u| u.profile_photo }
+  end
 end

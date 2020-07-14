@@ -7,11 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
+User.destroy_all
 Rating.destroy_all
 Event.destroy_all
-Chatroom.destroy_all
 Venue.destroy_all
-User.destroy_all
+Chatroom.destroy_all
+Message.destroy_all
 
 user_1 = User.create(name: "john", email: "john@john.com", password: "123456", role: "admin")
 user_2 = User.create(name: "omar", email: "omar@omar.com", password: "123456", role: "admin" )
@@ -175,12 +176,11 @@ end
 puts "creating user profile pics"
 
 User.all.each do |user|
-  name = ["John", "Chris", "Omar"]
-    picture = name.sample
-    name.each do
-      name = "#{picture}#{i}.jpg"
-      file = File.open(File.join(__dir__,"./seed_picture/profile_picture/#{name}"))
-      venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
+    users = ["John", "Chris", "Omar"]
+    picture = users.sample
+    user.yield_self do |u|
+      file = File.open(File.join(__dir__,"./seed_picture/profile_picture/#{picture}.jpg"))
+      u.profile_photo.attach(io: file, filename: picture, content_type: 'image/jpg')
     end
 end
 
