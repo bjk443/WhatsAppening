@@ -115,19 +115,19 @@
 
 .message-area {
   position: absolute;
-  bottom: 0;
-  right: 8px;
+  bottom: 20;
+
 }
 .btn-show {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 17px;
   font-weight: 600;
   border-radius: 10px;
   letter-spacing: 1px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .wrap-show {
@@ -135,6 +135,30 @@
   height: 65vh;
   border-radius: 30px 30px 0 0;
   margin-top: -26px;
+}
+
+.show-item-container {
+ display: flex;
+ justify-content: space-evenly;
+ align-items: flex-start;
+ margin-bottom: 10px;
+  .fa-clock, .fa-user, .fa-globe-americas {
+    margin: 10px;
+    font-size: 30px;
+  }
+  .waiting-time-show, .capacity-show, .category-show {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  }
+  .progress {
+    width: 100%;
+  }
+  p {
+    margin-bottom: 0;
+    font-weight: bold;
+  }
 }
 
 .w-95 {
@@ -151,6 +175,10 @@
   .image img {
     width: 30px;
   }
+}
+
+.hr-tag hr {
+  font: 10px #BEC1CD;
 }
 
 .message-container {

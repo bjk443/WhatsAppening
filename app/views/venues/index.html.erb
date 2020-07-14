@@ -51,8 +51,7 @@
 
         <% empty_stars.times do %>
           <i class="fa fa-star" aria-hidden="true"></i>
-        <% end %>
-         (<%= venue.events.last.ratings.count %>)
+        <% end %> <h6>(<%= venue.events.last.ratings.count %>)</h6>
       </div>
     </div>
 
@@ -105,6 +104,7 @@
           <h2><%= link_to venue.name, venue_path(venue) %></h2>
           <h6><%= venue.events.last.name %></h6>
           <div class="capacity align-items-center">
+            <p> Event Rating: </p>
             <% full_stars = venue.events.last.average_rating %>
             <% empty_stars = 5 - full_stars %>
 
@@ -116,23 +116,25 @@
             <% end %>
           </div>
           <div class="capacity align-items-center">
-
-            <p> Capacity:</p>
+            <i class="far fa-user orange"></i><p> Capacity:</p>
             <p class="bold">&nbsp;<%= venue.capacity %></p>
           </div>
           <div class="capacity align-items-center">
+            <i class="far fa-clock orange"></i>
             <p> Waiting Time:</p>
             <p class="bold">&nbsp;<%= venue.events.last.waiting_time_now %> </p>
           </div>
           <div class="crowd_level">
             <% crowded = venue.events.last.average_crowded_level.round %>
             <% uncrowded = 10 - venue.events.last.average_crowded_level.round %>
-            <% crowded.times do %>
-              <i class="fas fa-user"></i>
-            <% end %>
-            <% uncrowded.times do %>
-              <i class="far fa-user"></i>
-            <% end %>
+            <p> Crowding: </p>
+            <div class="progress">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: <%= crowded*10%>%" aria-valuenow="<%= crowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+              <div class="progress-bar bg-success" role="progressbar" style="width: <%= uncrowded*10%>%" aria-valuenow="<%= uncrowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+            </div>
+          </div>
+          <div class="social icons">
+            <i class="fas fa-share-alt"></i>
           </div>
         </div>
       </div>
@@ -154,10 +156,6 @@
   </div>
 </div>
 <% end %>
-<!--stars, in ratings controller add methods to calculate/round full,empty stars from the ratings of the user -->
-<!-- avatar, in livefeed controller add method to get users currently live, iterate and call .each on them in view  -->
-
-
 </div>
 
 
