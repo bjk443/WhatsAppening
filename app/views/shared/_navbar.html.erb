@@ -1,5 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-dark navbar-lewagon">
-  <%= link_to "whatshappening", root_path, class: "logo-nav" %>
+  <%= link_to root_path, class: "logo-nav" do %>
+    <%= image_tag ("logo-2.png"), class: "logo-2"  %>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
