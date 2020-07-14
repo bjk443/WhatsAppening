@@ -13,7 +13,7 @@ Chatroom.destroy_all
 Venue.destroy_all
 User.destroy_all
 
-user_1 = User.create(name: "john", email: "john@john.com", password: "123456", role: "admin" )
+user_1 = User.create(name: "john", email: "john@john.com", password: "123456", role: "admin")
 user_2 = User.create(name: "omar", email: "omar@omar.com", password: "123456", role: "admin" )
 user_3 = User.create(name: "chris", email: "chris@chris.com", password: "123456", role: "admin" )
 
@@ -172,6 +172,19 @@ Venue.all.each do |venue|
     end
 end
 
+puts "creating user profile pics"
+
+User.all.each do |user|
+  name = ["John", "Chris", "Omar"]
+    picture = name.sample
+    name.each do
+      name = "#{picture}#{i}.jpg"
+      file = File.open(File.join(__dir__,"./seed_picture/profile_picture/#{name}"))
+      venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
+    end
+end
+
+puts "Creating chatrooms..."
 Chatroom.create(venue_id: venue_1.id)
 Chatroom.create(venue_id: venue_2.id)
 Chatroom.create(venue_id: venue_3.id)

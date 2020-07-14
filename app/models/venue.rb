@@ -13,11 +13,10 @@ class Venue < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  # def messaging_user_avatar
-  #   # write a query to get all the messages posted
-  #   if self.chatrooms.messages.count == 0
-  #     return 0
-  #   else
-  #     self.chatrooms.messages
-  #   end
+  def messaging_user_avatars
+    @messages = self.chatroom.messages
+                            .where(user: 'normal_user')
+                            .reorder('created_at DESC')
+                            .limit(3)
+    avatar_photo_set = @messages.map { |m| m.user.profile_photo }
 end
