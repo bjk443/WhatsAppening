@@ -173,15 +173,12 @@ Venue.all.each do |venue|
     end
 end
 
-puts "creating user profile pics"
+puts "Creating user profile pics"
 
 User.all.each do |user|
-    users = ["John", "Chris", "Omar"]
-    picture = users.sample
-    user.yield_self do |u|
-      file = File.open(File.join(__dir__,"./seed_picture/profile_picture/#{picture}.jpg"))
-      u.profile_photo.attach(io: file, filename: picture, content_type: 'image/jpg')
-    end
+  picture = user.name
+  file = File.open(File.join(__dir__,"./seed_picture/profile_picture/#{user.name}.jpg"))
+  user.profile_photo.attach(io: file, filename: picture, content_type: 'image/jpg')
 end
 
 puts "Creating chatrooms..."
