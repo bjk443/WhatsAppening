@@ -42,16 +42,21 @@
       <div class="card-trip-infos">
         <h2><%= link_to venue.name, venue_path(venue), data: { turbolinks: false} %></h2>
         <h6><%= venue.events.last.name %></h6>
-        <% full_stars = venue.events.last.average_rating %>
-        <% empty_stars = 5 - full_stars %>
+        <div class="stars-card d-flex align-items-center">
+          <div class="stars">
+            <% full_stars = venue.events.last.average_rating %>
+            <% empty_stars = 5 - full_stars %>
 
-        <% full_stars.times do %>
-          <i class="fa fa-star orange" aria-hidden="true"></i>
-        <% end %>
+            <% full_stars.times do %>
+              <i class="fa fa-star orange" aria-hidden="true"></i>
+            <% end %>
 
-        <% empty_stars.times do %>
-          <i class="fa fa-star" aria-hidden="true"></i>
-        <% end %> <h6>(<%= venue.events.last.ratings.count %>)</h6>
+            <% empty_stars.times do %>
+              <i class="fa fa-star" aria-hidden="true"></i>
+            <% end %>
+          </div>
+        <h6 class="ml-2 mt-1">(<%= venue.events.last.ratings.count %>)</h6>
+        </div>
       </div>
     </div>
 
