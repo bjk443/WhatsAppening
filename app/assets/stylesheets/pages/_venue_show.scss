@@ -1,3 +1,8 @@
+.wrap-all {
+  height: 100vh;
+  overflow: hidden;
+}
+
 .card-category {
   background-size: cover;
   background-position: center;
@@ -181,4 +186,8 @@
 
 .upload-photo::after {
   display: none;
+}
+
+.msg-scroll {
+  overflow-y: scroll !important;
 }
