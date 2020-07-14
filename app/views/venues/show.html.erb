@@ -22,8 +22,6 @@
     <% end %>
       (<%= @venue.events.last.ratings.count %>)</p>
     </div>
-    <p class="mt-2"> <strong>Now playing</strong></p>
-
     <div class="card-product mt-3">
       <div id="album" style="background-image: url(<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>)">
         <audio id="mySong">
@@ -42,17 +40,17 @@
   </div>
 </div>
 
-<div class="wrap-show pt-5">
-    <div class="show-item-container">
+<div class="wrap-show pt-3">
+    <div class="show-item-container justify-content-between px-5">
       <div class="waiting-time-show">
         <i class="far fa-clock orange"></i>
         <p> Waiting Time</p>
-        <p class="text-secondary">&nbsp;<%= @venue.events.last.waiting_time_now %> </p>
+        <h6 class="text-secondary">&nbsp;<%= @venue.events.last.waiting_time_now %> </h6>
       </div>
       <div class="capacity-show">
         <i class="far fa-user orange"></i>
         <p> Capacity</p>
-        <p class="text-secondary">&nbsp;<%= @venue.capacity %> PAX</p>
+        <h6 class="text-secondary">&nbsp;<%= @venue.capacity %> Pax</h6>
         <% crowded = @venue.events.last.average_crowded_level.round %>
         <% uncrowded = 10 - @venue.events.last.average_crowded_level.round %>
         <div class="progress">
@@ -63,20 +61,24 @@
       <div class="category-show">
         <i class="fas fa-globe-americas orange"></i>
         <p> Category</p>
-        <p class="text-secondary"> <%=@venue.category %></p>
+        <h6 class="text-secondary"> <%=@venue.category %></h6>
       </div>
     </div>
     <div class="hr-tag">
       <hr>
     </div>
-  <div class="container msg-scroll">
-    <h6><strong>LIVE FEED: </strong></h6>
-    <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-      <% @chatroom.messages.each do |message| %>
-        <%= render 'messages/message', message: message %>
-      <% end %>
+    <div class="wrap-message">
+      <div class="live-feed ml-3">
+        <h6><strong>Live Feed: </strong></h6>
+      </div>
+    <div class="container msg-scroll">
+      <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+        <% @chatroom.messages.each do |message| %>
+          <%= render 'messages/message', message: message %>
+        <% end %>
+      </div>
     </div>
-  </div>
+    </div>
 </div>
 
 
