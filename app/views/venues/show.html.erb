@@ -45,13 +45,13 @@
     <div class="show-item-container">
       <div class="waiting-time-show">
         <i class="far fa-clock orange"></i>
-        <p> Waiting Time:</p>
-        <p class="bold">&nbsp;<%= @venue.events.last.waiting_time_now %> </p>
+        <p> Waiting Time</p>
+        <p class="text-secondary">&nbsp;<%= @venue.events.last.waiting_time_now %> </p>
       </div>
       <div class="capacity-show">
         <i class="far fa-user orange"></i>
-        <p> Capacity: </p>
-        <p class="bold">&nbsp;<%= @venue.capacity %> PAX</p>
+        <p> Capacity</p>
+        <p class="text-secondary">&nbsp;<%= @venue.capacity %> PAX</p>
         <% crowded = @venue.events.last.average_crowded_level.round %>
         <% uncrowded = 10 - @venue.events.last.average_crowded_level.round %>
         <div class="progress">
@@ -61,18 +61,19 @@
       </div>
       <div class="category-show">
         <i class="fas fa-globe-americas orange"></i>
-        <p> Category: </p>
+        <p> Category</p>
         <p class="text-secondary"> <%=@venue.category %></p>
       </div>
     </div>
+    <div class="hr-tag">
+      <hr>
+    </div>
   <div class="container msg-scroll">
-    <div class="border-container">
     <h6><strong>LIVE FEED: </strong></h6>
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
       <% @chatroom.messages.each do |message| %>
         <%= render 'messages/message', message: message %>
       <% end %>
-    </div>
     </div>
   </div>
 </div>

@@ -136,6 +136,7 @@
  display: flex;
  justify-content: space-evenly;
  align-items: flex-start;
+ margin-bottom: 10px;
   .fa-clock, .fa-user, .fa-globe-americas {
     margin: 10px;
     font-size: 30px;
@@ -155,7 +156,6 @@
   }
 }
 
-
 .w-95 {
   width: 95%;
 }
@@ -172,9 +172,8 @@
   }
 }
 
-.border-container {
-  padding-top: 10px;
-  border-top: 5px;
+.hr-tag hr {
+  font: 10px #BEC1CD;
 }
 
 .message-container {
