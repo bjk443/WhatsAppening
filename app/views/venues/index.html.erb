@@ -56,6 +56,11 @@
             <% end %>
           </div>
         <h6 class="ml-2 mt-1">(<%= venue.events.last.ratings.count %>)</h6>
+          <div class="avatars-online">
+          <% venue.messaging_user_avatars.each do |photo| %>
+            <img class="avatar" alt="avatar" src="<%=cl_image_path photo.key %>" />
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -120,26 +125,26 @@
             <i class="fa fa-star" aria-hidden="true"></i>
             <% end %>
           </div>
-          <div class="capacity align-items-center">
+          <div class="capacity align-items-center mr-2">
             <i class="far fa-user orange"></i><p> Capacity:</p>
             <p class="bold">&nbsp;<%= venue.capacity %></p>
           </div>
-          <div class="capacity align-items-center">
+          <div class="capacity align-items-center mr-2">
             <i class="far fa-clock orange"></i>
             <p> Waiting Time:</p>
-            <p class="bold">&nbsp;<%= venue.events.last.waiting_time_now %> </p>
+            <p class="bold"> &nbsp;<%= venue.events.last.waiting_time_now %> </p>
           </div>
           <div class="crowd_level">
             <% crowded = venue.events.last.average_crowded_level.round %>
             <% uncrowded = 10 - venue.events.last.average_crowded_level.round %>
-            <p> Crowding: </p>
+            <p> Crowding:
             <div class="progress">
-              <div class="progress-bar bg-danger" role="progressbar" style="width: <%= crowded*10%>%" aria-valuenow="<%= crowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
-              <div class="progress-bar bg-success" role="progressbar" style="width: <%= uncrowded*10%>%" aria-valuenow="<%= uncrowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+              <div class="progress-bar bg-danger" role="progressbar" style="width: <%= crowded*10%>%" aria-valuenow="<%= crowded%>" aria-valuemin="0" aria-valuemax="10"></div>
+              <div class="progress-bar bg-success" role="progressbar" style="width: <%= uncrowded*10%>%" aria-valuenow="<%= uncrowded%>" aria-valuemin="0" aria-valuemax="10"></div>
             </div>
-          </div>
-          <div class="social icons">
-            <i class="fas fa-share-alt"></i>
+            <div class="social icons">
+              <i class="fas fa-share-alt"></i>
+            </div>
           </div>
         </div>
       </div>

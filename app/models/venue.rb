@@ -1,8 +1,8 @@
 class Venue < ApplicationRecord
   belongs_to :user
   has_many_attached :photos
-  has_many :events
-  has_one :chatroom
+  has_many :events, dependent: :destroy
+  has_one :chatroom, dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -13,11 +13,10 @@ class Venue < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  # def messaging_user_avatar
-  #   # write a query to get all the messages posted
-  #   if self.chatrooms.messages.count == 0
-  #     return 0
-  #   else
-  #     self.chatrooms.messages
-  #   end
+  def messaging_user_avatars
+    @messages = self.chatroom.messages
+                            .reorder('created_at DESC')
+                            .limit(3)
+    @messages.map { |m| m.user }.uniq.map { |u| u.profile_photo }
+  end
 end

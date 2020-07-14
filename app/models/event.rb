@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   has_one :user, through: :venue
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
   belongs_to :venue
   def average_rating
     if self.ratings.count == 0
