@@ -160,9 +160,11 @@
     justify-items: center;
     align-items: center;
   }
+
   .progress {
     width: 100%;
   }
+
   p {
     margin-bottom: 0;
     font-weight: 500;
@@ -230,8 +232,8 @@
 }
 
 .msg-scroll {
-  margin-top: 18px;
-  max-height: 320px;
+  margin-top: 10px;
+  max-height: 34vh;
   overflow-y: scroll !important;
 }
 
