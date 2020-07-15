@@ -103,7 +103,7 @@
     <% if venue.events != nil %>
       <div class="event-card-search d-flex align-items-center">
         <div class="card-1">
-          <%= cl_image_tag venue.photos[0].key, height:170, crop: :fill, class: "image_search w-100" %>
+          <%= cl_image_tag venue.photos[0].key, height:155, crop: :fill, class: "image_search w-100" %>
         </div>
         <div class="card-info">
           <h2><%= link_to venue.name, venue_path(venue) %></h2>
