@@ -2,8 +2,8 @@ class VenuesController < ApplicationController
   before_action :check_owner, only: [:edit]
 
   def index
-    latitude = request.location.latitude || 1.2884
-    longitude = request.location.longitude || 103.8490
+    latitude = request.location.latitude || 1.3059422
+    longitude = request.location.longitude || 103.8301194
     @search_query = params.dig(:search, :category)
     if @search_query.nil? || @search_query.empty?
       @venues = Venue.near([latitude, longitude], 2)
