@@ -177,7 +177,7 @@ puts "Creating user profile pics"
 
 User.all.each do |user|
   picture = user.name
-  file = File.open(File.join(__dir__,"./seed_picture/profile_picture/#{user.name}.jpg"))
+  file = File.open(File.join(__dir__,"./seed_picture/profile_picture/#{user.name.capitalize}.jpg"))
   user.profile_photo.attach(io: file, filename: picture, content_type: 'image/jpg')
 end
 
