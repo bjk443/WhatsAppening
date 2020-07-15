@@ -83,98 +83,94 @@
     </div>
 </div>
 
-
-
-
-
-
     <div class="btn-show btn btn-primary w-95" data-venue="<%= @venue.id %>" data-toggle="modal" data-target="#myModal">GO LIVE</div>
 
       <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
 
-      <!-- Modal content-->
+      <!-- Rating Form content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-
+          <div class="rating-header w-100">
+            <h2> Your take on the Vibe? </h2>
+          </div>
         </div>
 
         <div class="modal-body">
-          <!-- rating the venue with stars -->
-          <h4 class="modal-title">Rate the venue right now!</h4>
-          <div id="venue-rating">
-          <form action=<%="/venues/#{@venue.id}/events/#{@venue.events.last.id}/ratings"%>
-                method="POST">
-            <input type="hidden" name="authenticity_token" value=<%=form_authenticity_token %>>
-            <div id="full-stars">
-                <div class="rating-group">
-                    <input checked class="rating__input rating__input--none" name="stars" id="rating3-none" value=0 type="radio">
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="stars" id="rating3-1" value=1 type="radio">
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="stars" id="rating3-2" value=2 type="radio">
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="stars" id="rating3-3" value=3 type="radio">
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="stars" id="rating3-4" value=4 type="radio">
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="stars" id="rating3-5" value=5 type="radio">
-                </div>
-            </div>
-          </div>
-          <!-- slider for choosing crowded level-->
-          <h4 class="modal-title">how crowded is the place?</h4>
-          <div class=d-flex>
-          <p>not crowded</p>
-            <input type="range" name="crowd_level" min="0" max="50" value="25" id="fader"
-              step="10" list="volsettings"> <p>very crowded</p>
-            <datalist id="volsettings">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </datalist>
-            </div>
-
-          <!-- slider for choosing waiting time-->
-          <h4 class="modal-title">how long did you wait?</h4>
-              <div class="form-row align-items-center">
-                <div class="col-auto my-1">
-                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                  <select name="waiting_time" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                    <option selected>Choose...</option>
-                    <option value="no wait">no wait</option>
-                    <option value="5 min">5 min</option>
-                    <option value="10 min">10 min</option>
-                    <option value="15 min">15 min</option>
-                    <option value="30 min">30 min</option>
-                    <option value="30 min+">30 min + </option>
-                  </select>
-                </div>
+          <div class = "rating-body">
+            <!-- rating the venue with stars -->
+            <h4 class="modal-title">Rate the venue right now!</h4>
+            <div id="venue-rating">
+            <form action=<%="/venues/#{@venue.id}/events/#{@venue.events.last.id}/ratings"%>
+                  method="POST">
+              <input type="hidden" name="authenticity_token" value=<%=form_authenticity_token %>>
+              <div id="full-stars">
+                  <div class="rating-group">
+                      <input checked class="rating__input rating__input--none" name="stars" id="rating3-none" value=0 type="radio">
+                      <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                      <input class="rating__input" name="stars" id="rating3-1" value=1 type="radio">
+                      <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                      <input class="rating__input" name="stars" id="rating3-2" value=2 type="radio">
+                      <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                      <input class="rating__input" name="stars" id="rating3-3" value=3 type="radio">
+                      <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                      <input class="rating__input" name="stars" id="rating3-4" value=4 type="radio">
+                      <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                      <input class="rating__input" name="stars" id="rating3-5" value=5 type="radio">
+                  </div>
               </div>
-              <input type="submit" value="Submit">
-        </form>
+            </div>
+            <!-- slider for choosing crowded level-->
+            <h4 class="modal-title">how crowded is the place?</h4>
+            <div class=d-flex>
+            <p>not crowded</p>
+              <input type="range" name="crowd_level" min="0" max="10" value="1" id="fader"
+                step="5" list="volsettings"> <p>very crowded</p>
+              <datalist id="volsettings">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+              </datalist>
+              </div>
 
-        </div>
+            <!-- drop down menu for choosing waiting time-->
+            <h4 class="modal-title">how long did you wait?</h4>
+                <div class="form-row align-items-center justify-content-center">
+                  <div class="col-auto my-1 w-50">
+                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                    <select name="waiting_time" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                      <option selected>Choose...</option>
+                      <option value="no wait">no wait</option>
+                      <option value="5 min">5 min</option>
+                      <option value="10 min">10 min</option>
+                      <option value="15 min">15 min</option>
+                      <option value="30 min">30 min</option>
+                      <option value="30 min+">30 min + </option>
+                    </select>
+                  </div>
+                </div>
+          </div>  
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <div class= "rating-buttons w-100">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                  </form>
+          </div>
         </div>
       </div>
       </div>
       </div>
       </div>
-
-
 
 
     <div class="message-area">
