@@ -1,1 +1,12 @@
-_mobile_navbar.html.erb
+<div class="mobile-nav d-flex justify-content-around w-100">
+  <div class="icon">
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fas fa-sign-out-alt"></i>
+    <% end %>
+  </div>
+  <div class="icon">
+    <%= link_to root_path do %>
+      <i class="fas fa-home"></i>
+    <% end %>
+  </div>
+</div>

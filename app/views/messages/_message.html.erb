@@ -4,7 +4,7 @@
       <img class="avatar" alt="avatar" src="<%=cl_image_path message.user.profile_photo.key %>" />
     </div>
     <% if message.photo.attached? %>
-      <%= cl_image_tag message.photo.key, height: 100, width: 200, crop: :fill %>
+      <%= cl_image_tag message.photo.key, height: 178, width: 100, crop: :fit %>
     <% end %>
     <p class="flex-grow-1"><%= message.content %></p>
       <a><%= message.created_at.strftime("%l:%M%p") %></a>
