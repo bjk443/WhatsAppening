@@ -19,4 +19,10 @@ class Venue < ApplicationRecord
                             .limit(3)
     @messages.map { |m| m.user }.uniq.map { |u| u.profile_photo }
   end
+  # The above function calls the profile photos of the last 3 unique people who have posted on the chat
+
+  def messaging_user_avatar
+    @messages = self.chatroom.messages
+    @messages.user.profile_photo
+  end
 end
