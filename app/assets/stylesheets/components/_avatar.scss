@@ -4,11 +4,11 @@
 }
 
 .card-trip-infos .avatars-online {
-  position: absolute;
-  top: 81px;
+  margin-top: 5px;
   .avatar {
     width: 30px;
     border-radius: 50%;
+    float: left;
   }
 }
 
