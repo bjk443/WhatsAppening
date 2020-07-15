@@ -7,6 +7,8 @@ class VenuesController < ApplicationController
     @search_query = params.dig(:search, :category)
     if @search_query.nil? || @search_query.empty?
       @venues = Venue.near([latitude, longitude], 2)
+      @venues_cafe = @venues.select {|x|x.category == "cafe"}
+      @venues_bar = @venues.select {|x|x.category == "bar"}
     else
       @category_of_venues = Venue.search_by_category(@search_query)
       @venues_search = @category_of_venues.near([latitude, longitude], 2)

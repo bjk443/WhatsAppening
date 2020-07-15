@@ -6,7 +6,10 @@
     <% if message.photo.attached? %>
       <%= cl_image_tag message.photo.key, height: 178, width: 100, crop: :fit %>
     <% end %>
-    <p class="flex-grow-1"><%= message.content %></p>
+    <div class="message-with-user flex-grow-1">
+      <p><%= message.content %></p>
+      <h6>by <%= message.user.name %></h6>
+    </div>
       <a><%= message.created_at.strftime("%l:%M%p") %></a>
   </div>
 </div>

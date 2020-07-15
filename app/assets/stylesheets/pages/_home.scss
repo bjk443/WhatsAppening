@@ -3,6 +3,12 @@
   overflow-x: hidden;
 }
 
+.logo-3 {
+  width: 130px;
+  margin-bottom: px;
+  margin-left: -10px;
+}
+
 .cards-container {
   .row {
     flex-wrap: nowrap;
@@ -10,13 +16,13 @@
   }
 }
 .container_orange {
-  padding: 80px 10px 55px 10px;
+  padding: 25px 10px 20px 10px;
   background-color: #ff7700;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
 
   h2 {
-    font-weight: 600;
+    font-weight: 700;
     color: white;
     font-size: 41px;
   }
@@ -69,7 +75,7 @@ input.empty {
 // Event card
 
 .event-card {
-  height: 350px;
+  height: 250px;
   min-width: 70vw;
   margin: 0 10px 10px 0;
   border-radius: 23px;
