@@ -10,6 +10,7 @@ class VenuesController < ApplicationController
     else
       @category_of_venues = Venue.search_by_category(@search_query)
       @venues_search = @category_of_venues.near([latitude, longitude], 2)
+      # @venues_search_waiting = @venues_search.order("waiting_time_now DESC")
       @markers = @venues_search.map do |venue|
         {
           lat: venue.latitude,
