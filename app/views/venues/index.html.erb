@@ -35,7 +35,7 @@
   <div class="row">
     <% @venues.each do |venue|%>
     <% if venue.events != nil %>
-    <div class="event-card" style= "background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url(<%=cl_image_path venue.photos[0].key %>)">
+    <div class="event-card" style= "background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url(<%=cl_image_path venue.photos[0].key, height: 350, crop: :fit%>)">
       <div class="go_next">
         <a><i class='fas fa-chevron-right'></i></a>
       </div>

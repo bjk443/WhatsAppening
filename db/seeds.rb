@@ -14,65 +14,85 @@ Venue.destroy_all
 Chatroom.destroy_all
 Message.destroy_all
 
+puts "Creating users..."
 user_1 = User.create(name: "john", email: "john@john.com", password: "123456", role: "admin")
 user_2 = User.create(name: "omar", email: "omar@omar.com", password: "123456", role: "admin" )
 user_3 = User.create(name: "chris", email: "chris@chris.com", password: "123456", role: "admin" )
 
-puts "User created"
-puts "creating venues"
 
+puts "Creating venues..."
 venue_1 = Venue.create!(
-  name: "The Woods",
-  address: "214 South Bridge Rd, Singapore 058763",
-  description: "Event place, Meeting Room, Studio, Unique",
-  capacity: 20,
+  name: "The Writing Club",
+  address: "390, Orchard Road, Singapore 238871",
+  description: "Great selection of whiskey",
+  capacity: 30,
   user: user_1,
   category: "bar"
 )
 
 venue_2 = Venue.create!(
-  name: "The Float@Marina Bay",
-  address: "20 Raffles Ave. Singapore 039805",
-  description: "Great place in marina bay Singapore",
-  capacity: 500,
-  user: user_2,
-  category: "cafe"
-)
-
-venue_3 = Venue.create!(
-  name: "Amazing Events",
-  address: "200 South Bridge Rd, Singapore 058763",
-  description: "Event Space, Function Hall, Kids & Recreational, Meeting Room, Studio, Training Room, Unique Venue, Warehouse",
-  capacity: 100,
+  name: "The Drunken Poet",
+  address: "400, Orchard Road, Singapore 238875",
+  description: "Arguably the best Irish Pub in Singapore",
+  capacity: 45,
   user: user_2,
   category: "bar"
 )
 
+venue_3 = Venue.create!(
+  name: "The Other Room",
+  address: "320, Orchard Road, Singapore 238865",
+  description: "Amazing cocktail bar",
+  capacity: 40,
+  user: user_3,
+  category: "bar"
+)
+
 venue_4 = Venue.create!(
-  name: "Three Degree Cafe",
-  address: "11 Slim Barracks Rise, Singapore 138664",
-  description: "Cafe, Event Space, Halal Venue",
-  capacity: 100,
+  name: "Esplanade Club",
+  address: "442, Orchard Road, Singapore 238884",
+  description: "Premium concert venue",
+  capacity: 150,
   user: user_1,
-  category: "cafe"
+  category: "bar"
 )
 
 venue_5 = Venue.create!(
-  name: "Cloud9 Events",
-  address: "65 Ubi Rd 1, Singapore 408729",
-  description: "Event Space, Function Hall, Kids & Recreational, Meeting Room",
-  capacity: 50,
+  name: "TCC Cafe",
+  address: "360, Orchard Road, Singapore 238869",
+  description: "Leading chain of art boutique caffès",
+  capacity: 30,
   user: user_2,
   category: "cafe"
 )
+
+venue_6 = Venue.create!(
+  name: "Cafe de Muse",
+  address: "350, Orchard Road, Singapore 238868",
+  description: "Cosy café that will tease your palate",
+  capacity: 25,
+  user: user_3,
+  category: "cafe"
+)
+
+venue_7 = Venue.create!(
+  name: "Starbucks",
+  address: "541, Orchard Road, Singapore 238881",
+  description: "Premium roaster and retailer of specialty coffee",
+  capacity: 20,
+  user: user_3,
+  category: "cafe"
+)
+
 puts "Creating events..."
 event_1 = Event.create!(
   name: "The Greatest Show on Earth",
   artist: "Daft Punk",
   genre: "House",
-  venue: venue_1,
+  venue: venue_4,
   playlist_id: "2098157264"
 )
+
 event_2 = Event.create!(
   name: "The end of days",
   artist: "Beyonce",
@@ -80,34 +100,43 @@ event_2 = Event.create!(
   venue: venue_2,
   playlist_id: "1677006641"
 )
+
 event_3 = Event.create!(
   name: "200m run",
   artist: "Jay-Z",
   genre: "Hip Hop",
-  venue: venue_2,
+  venue: venue_1,
   playlist_id: "1677006641"
 )
-event_3 = Event.create!(
+
+event_4 = Event.create!(
   name: "Halloween bar crawl",
   artist: "Eminem",
   genre: "Rap",
   venue: venue_3,
   playlist_id: "3110422662"
 )
-
-event_4 = Event.create!(
+event_5 = Event.create!(
   name: "Booze cruise",
   artist: "U2",
   genre: "Rock",
-  venue: venue_4,
+  venue: venue_5,
   playlist_id: "3110422662"
 )
 
-event_5 = Event.create!(
+event_6 = Event.create!(
   name: "Full Moon Party",
   artist: "Vivaldi",
   genre: "Classic",
-  venue: venue_5,
+  venue: venue_6,
+  playlist_id: "3110422662"
+)
+
+event_7 = Event.create!(
+  name: "Full Moon Party",
+  artist: "Vivaldi",
+  genre: "Classic",
+  venue: venue_7,
   playlist_id: "3110422662"
 )
 
@@ -161,16 +190,12 @@ Rating.create!(
   user: user_3
 )
 
-puts "Attaching pictures for venues..."
+puts "Attaching pictures to venues..."
 
 Venue.all.each do |venue|
-  names = ["amara-", "royal-", "tonito-"]
-  house = names.sample
-    for i in (1..5) do
-      name = "#{house}#{i}.jpg"
-      file = File.open(File.join(__dir__,"./seed_picture/#{name}"))
-      venue.photos.attach(io: file, filename: name, content_type: 'image/jpg')
-    end
+  venue_picture = venue.name
+  file = File.open(File.join(__dir__,"./seed_picture/#{venue.name}.jpg"))
+  venue.photos.attach(io: file, filename: venue_picture, content_type: 'image/jpg')
 end
 
 puts "Creating user profile pics"
@@ -187,3 +212,5 @@ Chatroom.create(venue_id: venue_2.id)
 Chatroom.create(venue_id: venue_3.id)
 Chatroom.create(venue_id: venue_4.id)
 Chatroom.create(venue_id: venue_5.id)
+Chatroom.create(venue_id: venue_6.id)
+Chatroom.create(venue_id: venue_7.id)
