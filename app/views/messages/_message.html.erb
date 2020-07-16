@@ -1,7 +1,12 @@
 <div class="message-container" id="message-<%= message.id %>">
   <div class="message-column d-flex justify-content-between align-items-center">
     <div class="image mr-3">
-      <img class="avatar" alt="avatar" src="<%=cl_image_path message.user.profile_photo.key %>" />
+      <% if message.user.profile_photo.attached? %>
+        <img class="avatar" alt="avatar" src="<%=cl_image_path message.user.profile_photo.key %>" />
+      <% else %>
+        <img class="avatar" src="https://placekitten.com/408/287">
+        <%#= image_tag "https://placekitten.com/200/138", height: "40", width: "40" %>
+      <% end %>
     </div>
     <% if message.photo.attached? %>
       <div class="message-with-user flex-grow-1">
