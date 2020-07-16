@@ -7,10 +7,13 @@ class VenuesController < ApplicationController
     @search_query = params.dig(:search, :category)
     if @search_query.nil? || @search_query.empty?
       @venues = Venue.near([latitude, longitude], 5)
+      @venues_cafe = @venues.select {|x|x.category == "cafe"}
+      @venues_bar = @venues.select {|x|x.category == "bar"}
     else
       @category_of_venues = Venue.search_by_category(@search_query)
       @venues_search = @category_of_venues.near([latitude, longitude], 5)
-      # @venues_search_waiting = @venues_search.order("waiting_time_now DESC")
+      @venues_search_waiting = @venues_search.sort_by {|x| x.events.last.waiting_time_to_integer}
+      # raise
       @markers = @venues_search.map do |venue|
         {
           lat: venue.latitude,
@@ -26,6 +29,8 @@ class VenuesController < ApplicationController
     # get the info
     base_url = "https://api.deezer.com/playlist/"
     @venue = Venue.find(params[:id])
+    current_user_name = current_user.name
+    flash.now[:notice] = "Hi #{current_user_name.capitalize}" + ", Welcome to #{@venue.name}"
     # @venue_playlist_info
     @playlist_data = HTTParty.get(base_url + @venue.events.first.playlist_id)
     @chatroom = @venue.chatroom
