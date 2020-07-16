@@ -10,7 +10,7 @@ const liveBtn = () => {
       const hiddenAt = JSON.parse(localStorage[`hideLiveButton-${venueId}`]);
       const timePast = (now - hiddenAt.hiddenAt) / 60000;
 
-      console.log(timePast);
+      // console.log(timePast);
       if (timePast > 0.3) {
         btn.classList.remove("display_none");
         message_area.classList.add("display_none");
