@@ -1,6 +1,5 @@
 <%= render 'shared/mobile_navbar'%>
 
-
 <div class="wrap-all">
 <div class="wrap-show-first">
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url(<%=cl_image_path @venue.photos[0].key %>)">
@@ -123,11 +122,12 @@
             </div>
             <!-- slider for choosing crowded level-->
             <h4 class="modal-title">How crowded is the place?</h4>
-            <div class="crowd-level-rating">
               <div class="d-flex justify-content-center">
                 <p>Not Crowded</p>
-              <input type="range" name="crowd_level" min="0" max="10" value="1" id="fader"
-                  step="2.5" list="volsettings">
+                <div class="crowd-level-rating">
+                  <input type="range" name="crowd_level" min="0" max="10" value="1" id="fader"
+                      step="2.5" list="volsettings">
+                </div>
                 <p>Crowded</p>
                 <datalist id="volsettings">
                   <option>0</option>
@@ -136,7 +136,6 @@
                   <option>7.5</option>
                   <option>10</option>
                 </datalist>
-                </div>
               </div>
 
             <!-- drop down menu for choosing waiting time-->

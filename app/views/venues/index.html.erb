@@ -55,18 +55,7 @@
                   <i class="fa fa-star orange" aria-hidden="true"></i>
                 <% end %>
 
-<<<<<<< HEAD
-            <% empty_stars.times do %>
-              <i class="fa fa-star" aria-hidden="true"></i>
-            <% end %>
-          </div>
-        <h6 class="ml-2 mt-1">(<%= venue.events.last.ratings.count %>)</h6>
-        </div>
-          <div class="avatars-online">
-          <% venue.messaging_user_avatars.each do |photo| %>
-            <img class="avatar" alt="avatar" src="<%=cl_image_path photo.key %>" />
-            <% end %>
-=======
+
                 <% empty_stars.times do %>
                   <i class="fa fa-star" aria-hidden="true"></i>
                 <% end %>
@@ -86,7 +75,6 @@
           <div class="event-card" style= "background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)), url(<%=cl_image_path venue.photos[0].key %>)">
           <h3><%= venue.name %></h3>
           <p>no event at the moment</p>
->>>>>>> eb82c6c7bcae34ecb5ab335914db4caf21f161dc
           </div>
         <% end %>
         <% end %>
