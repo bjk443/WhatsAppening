@@ -106,7 +106,7 @@
           <%= cl_image_tag venue.photos[0].key, height:155, crop: :fill, class: "image_search w-100" %>
         </div>
         <div class="card-info">
-          <h2><%= link_to venue.name, venue_path(venue) %></h2>
+          <h2><%= link_to venue.name, venue_path(venue), data: { turbolinks: false} %></h2>
           <h6><%= venue.events.last.name %></h6>
           <div class="capacity align-items-center">
             <!-- <p> Event Rating: </p> -->

@@ -99,7 +99,7 @@
         <div class="modal-body">
           <div class = "rating-body">
             <!-- rating the venue with stars -->
-            <h4 class="modal-title">Rate the venue right now!</h4>
+            <h4 class="modal-title">Rate the atmosphere!</h4>
             <div id="venue-rating">
             <form action=<%="/venues/#{@venue.id}/events/#{@venue.events.last.id}/ratings"%>
                   method="POST">
@@ -123,10 +123,10 @@
             <!-- slider for choosing crowded level-->
             <h4 class="modal-title">How crowded is the place?</h4>
             <div class="d-flex justify-content-center">
-            <p>0</p>
+            <p>Not Crowded</p>
             <input type="range" name="crowd_level" min="0" max="10" value="1" id="fader"
                 step="5" list="volsettings">
-            <p>10</p>
+            <p>Crowded</p>
               <datalist id="volsettings">
                 <option>0</option>
                 <option>1</option>
