@@ -30,7 +30,7 @@ class VenuesController < ApplicationController
     base_url = "https://api.deezer.com/playlist/"
     @venue = Venue.find(params[:id])
     current_user_name = current_user.name
-    flash.now[:notice] = "Hi #{current_user_name.capitalize}" + ", Welcome to #{@venue.name}"
+    flash.now[:notice] = "Hi #{current_user.name ? current_user_name.capitalize : current_user.email}" + ", Welcome to #{@venue.name}"
     # @venue_playlist_info
     @playlist_data = HTTParty.get(base_url + @venue.events.first.playlist_id)
     @chatroom = @venue.chatroom

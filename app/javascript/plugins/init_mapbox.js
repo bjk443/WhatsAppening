@@ -10,7 +10,7 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
       center: [103.8310042, 1.3061959],
-      zoom: 9,
+      zoom: 5,
     });
     const markers = JSON.parse(mapElement.dataset.markers);
       markers.forEach((marker) => {
@@ -21,7 +21,19 @@ const initMapbox = () => {
           .addTo(map);
       });
 
-    var marker = new mapboxgl.Marker()
+    // Addding a fix user marker
+    // el.className = 'marker';
+    // el.style.backgroundImage =
+    // 'url(https://placekitten.com/g/' +
+    // marker.properties.iconSize.join('/') +
+    // '/)';
+    // el.style.width = marker.properties.iconSize[0] + 'px';
+    // el.style.height = marker.properties.iconSize[1] + 'px';
+    const el = document.createElement('div');
+    el.className = 'marker';
+    el.style.backgroundImage = `url(${mapElement.dataset.profileUrl})`;
+    // make a marker for each feature and add to the map
+    const marker = new mapboxgl.Marker(el)
       .setLngLat([103.8310042, 1.3061959])
       .addTo(map);
 

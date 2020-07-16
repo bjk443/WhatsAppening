@@ -1,17 +1,19 @@
 const alertTimeOut = () => {
   const alert = document.querySelector(".alert");
   const btn = document.querySelector(".btn-show");
-  const venueId = btn.dataset.venue;
+  if (btn) {
+    const venueId = btn.dataset.venue;
 
-  if (localStorage[`hideLiveButton-${venueId}`]) {
-    const now = new Date().getTime();
-    const later = JSON.parse(localStorage[`hideLiveButton-${venueId}`]);
-    const timePast = (now - later.hiddenAt) / 60000;
-    console.log(timePast);
-    if (timePast === 0.2 || timePast < 99) {
-      alert.classList.add("display_none");
-    } else if (timePast > 100) {
-      alert.classList.remove("display_none");
+    if (localStorage[`hideLiveButton-${venueId}`]) {
+      const now = new Date().getTime();
+      const later = JSON.parse(localStorage[`hideLiveButton-${venueId}`]);
+      const timePast = (now - later.hiddenAt) / 60000;
+      console.log(timePast);
+      if (timePast === 0.2 || timePast < 99) {
+        alert.classList.add("display_none");
+      } else if (timePast > 100) {
+        alert.classList.remove("display_none");
+      }
     }
   }
 };
