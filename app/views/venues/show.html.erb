@@ -1,6 +1,5 @@
 <%= render 'shared/mobile_navbar'%>
 
-
 <div class="wrap-all">
 <div class="wrap-show-first">
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url(<%=cl_image_path @venue.photos[0].key %>)">
@@ -100,7 +99,7 @@
         <div class="modal-body">
           <div class = "rating-body">
             <!-- rating the venue with stars -->
-            <h4 class="modal-title">Rate the venue right now!</h4>
+            <h4 class="modal-title">Rate the atmosphere!</h4>
             <div id="venue-rating">
             <form action=<%="/venues/#{@venue.id}/events/#{@venue.events.last.id}/ratings"%>
                   method="POST">
@@ -123,24 +122,26 @@
             </div>
             <!-- slider for choosing crowded level-->
             <h4 class="modal-title">How crowded is the place?</h4>
-            <div class="d-flex justify-content-center">
-            <p>0</p>
-            <input type="range" name="crowd_level" min="0" max="10" value="1" id="fader"
-                step="5" list="volsettings">
-            <p>10</p>
-              <datalist id="volsettings">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </datalist>
+              <div class="crowd-rating d-flex align-items-center justify-content-center">
+                <p>No Crowd</p>
+                <div class="crowd-level-rating">
+                  <input type="range" name="crowd_level" min="0" max="10" value="1" id="fader"
+                      step="1" list="volsettings">
+                </div>
+                <p>Crowded</p>
+                <datalist id="volsettings">
+                  <option>0</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                </datalist>
               </div>
 
             <!-- drop down menu for choosing waiting time-->
@@ -165,7 +166,7 @@
         <div class="modal-footer">
           <div class= "rating-buttons w-100">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="submit" class="btn btn-primary " value="Submit">
                   </form>
           </div>
         </div>
