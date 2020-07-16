@@ -122,24 +122,20 @@
             </div>
             <!-- slider for choosing crowded level-->
             <h4 class="modal-title">How crowded is the place?</h4>
-            <div class="d-flex justify-content-center">
-            <p>Not Crowded</p>
-            <input type="range" name="crowd_level" min="0" max="10" value="1" id="fader"
-                step="5" list="volsettings">
-            <p>Crowded</p>
-              <datalist id="volsettings">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </datalist>
+            <div class="crowd-level-rating">
+              <div class="d-flex justify-content-center">
+                <p>Not Crowded</p>
+              <input type="range" name="crowd_level" min="0" max="10" value="1" id="fader"
+                  step="2.5" list="volsettings">
+                <p>Crowded</p>
+                <datalist id="volsettings">
+                  <option>0</option>
+                  <option>2.5</option>
+                  <option>5</option>
+                  <option>7.5</option>
+                  <option>10</option>
+                </datalist>
+                </div>
               </div>
 
             <!-- drop down menu for choosing waiting time-->
@@ -164,7 +160,7 @@
         <div class="modal-footer">
           <div class= "rating-buttons w-100">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="submit" class="btn btn-primary " value="Submit">
                   </form>
           </div>
         </div>
