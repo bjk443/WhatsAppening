@@ -1,9 +1,9 @@
 const liveBtn = () => {
   const message_area = document.querySelector(".message-area");
   const btn = document.querySelector(".btn-show");
-  const venueId = btn.dataset.venue;
   // console.log(venueId);
   if (btn) {
+    const venueId = btn.dataset.venue;
     if (localStorage[`hideLiveButton-${venueId}`]) {
       btn.classList.add("display_none");
       const now = new Date().getTime();
