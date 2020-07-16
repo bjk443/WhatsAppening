@@ -30,6 +30,7 @@ import { initMapbox } from "../plugins/init_mapbox";
 import { initSoundCard } from "../channels/live_music_card";
 import { liveBtn } from "../channels/live_button";
 import { takeOutInner } from "../plugins/take_out_innertext";
+import { alertTimeOut } from "../plugins/alert_setTimeOut";
 
 document.addEventListener("turbolinks:load", () => {
   // Call your functions here, e.g:
@@ -41,5 +42,6 @@ document.addEventListener("turbolinks:load", () => {
   // mapTab();
   // initSoundCard();
   initSoundCard();
+  alertTimeOut();
 });
 initMapbox();

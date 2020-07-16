@@ -36,4 +36,12 @@ class Event < ApplicationRecord
 
     return waiting_time_now
   end
+
+  def waiting_time_to_integer
+    if waiting_time_now == 0
+      return 0
+    else
+      waiting_time_now.split[0].to_i
+    end
+  end
 end
