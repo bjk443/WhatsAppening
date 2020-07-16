@@ -1,16 +1,16 @@
 const liveBtn = () => {
   const message_area = document.querySelector(".message-area");
   const btn = document.querySelector(".btn-show");
-  const venueId = btn.dataset.venue;
   // console.log(venueId);
   if (btn) {
+    const venueId = btn.dataset.venue;
     if (localStorage[`hideLiveButton-${venueId}`]) {
       btn.classList.add("display_none");
       const now = new Date().getTime();
       const hiddenAt = JSON.parse(localStorage[`hideLiveButton-${venueId}`]);
       const timePast = (now - hiddenAt.hiddenAt) / 60000;
 
-      console.log(timePast);
+      // console.log(timePast);
       if (timePast > 0.3) {
         btn.classList.remove("display_none");
         message_area.classList.add("display_none");
