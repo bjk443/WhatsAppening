@@ -34,7 +34,7 @@
 <!-- cards -->
 <div class="wrap-index-cards-section mt-1">
   <div class="index-section-1">
-    <div class="container index-title-1 ml-2 mt-4">
+    <div class="container index-title-1 ml-3 mt-4">
       <h2>Popular Bar</h2>
       <div class="hline-2"></div>
     </div>
@@ -81,7 +81,7 @@
     </div>
   </div>
     <div class="index-section-2">
-    <div class="container index-title-1 ml-2 mt-4">
+    <div class="container index-title-1 ml-3 mt-4">
       <h2>Popular Cafe</h2>
       <div class="hline-2"></div>
     </div>
@@ -133,8 +133,8 @@
 
 
 <!--   search result layout -->
-<div class="container_orange orange">
-  <div class="container header-index">
+<div class="container_orange orange padding-bottom">
+  <div class="container header-index margin-top">
       <h3><%= @venues_search.length %> Venues Identified!</h3>
   </div>
 </div>
@@ -155,7 +155,7 @@
 <!-- cards -->
 <div class="tab-content">
 <div class="container mt-3 my-listing-section tab-pane fade in active show" id="Pending">
-  <div class="row">
+  <div class="row search_scrollable">
     <% @venues_search.each do |venue|%>
     <% if venue.events != nil %>
       <div class="event-card-search d-flex align-items-center">
@@ -222,7 +222,65 @@
   </div>
 
   <!-- waiting_time -->
-  <div class="container my-listing-section tab-pane fade" id="waiting_time">
+  <div class="container my-listing-section tab-pane fade" id="waiting">
+    <div class="row search_scrollable">
+    <% @venues_search_waiting.each do |venue|%>
+    <% if venue.events != nil %>
+      <div class="event-card-search d-flex align-items-center">
+        <div class="card-1">
+          <%= cl_image_tag venue.photos[0].key, height:155, crop: :fill, class: "image_search w-100" %>
+        </div>
+        <div class="card-info">
+          <h2><%= link_to venue.name, venue_path(venue) %></h2>
+          <h6><%= venue.events.last.name %></h6>
+          <div class="capacity align-items-center">
+            <!-- <p> Event Rating: </p> -->
+            <% full_stars = venue.events.last.average_rating %>
+            <% empty_stars = 5 - full_stars %>
+
+            <% full_stars.times do %>
+            <i class="fa fa-star orange" aria-hidden="true"></i>
+            <% end %>
+            <% empty_stars.times do %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <% end %>
+          </div>
+          <div class="capacity_waiting_time d-flex align-items-center">
+            <div class="capacity align-items-center mr-4">
+              <i class="far fa-user orange"></i><!-- <p> Capacity:</p> -->
+              <p class="bold">&nbsp;<%= venue.capacity %></p>
+            </div>
+            <div class="capacity align-items-center">
+              <i class="far fa-clock orange"></i>
+              <!-- <p> Waiting Time:</p> -->
+              <p class="bold">&nbsp;<%= venue.events.last.waiting_time_now %> </p>
+            </div>
+          </div>
+          <div class="crowd_level">
+            <% crowded = venue.events.last.average_crowded_level.round %>
+            <% uncrowded = 10 - venue.events.last.average_crowded_level.round %>
+            <div class="crowd-section">
+              <p> Crowding: </p>
+              <div class="progress">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: <%= crowded*10%>%" aria-valuenow="<%= crowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+                <div class="progress-bar bg-success" role="progressbar" style="width: <%= uncrowded*10%>%" aria-valuenow="<%= uncrowded*10%>" aria-valuemin="0" aria-valuemax="10"></div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="social icons">
+            <i class="fas fa-share-alt"></i>
+          </div> -->
+        </div>
+      </div>
+
+      <% elsif venue.events.empty? %>
+        <div class="event-card" style= "background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)), url(<%=cl_image_path venue.photos[0].key %>)">
+        <h3><%= venue.name %></h3>
+        <p>no event at the moment</p>
+        </div>
+    <% end %>
+    <% end %>
+  </div>
 
   </div>
 

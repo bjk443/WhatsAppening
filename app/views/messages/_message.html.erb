@@ -4,12 +4,16 @@
       <img class="avatar" alt="avatar" src="<%=cl_image_path message.user.profile_photo.key %>" />
     </div>
     <% if message.photo.attached? %>
-      <%= cl_image_tag message.photo.key, height: 178, width: 100, crop: :fit %>
+      <div class="message-with-user flex-grow-1">
+        <%= cl_image_tag message.photo.key, height: 178, width: 100, crop: :fit %>
+        <h6 class="mt-1">by <%= message.user.name %></h6>
+      </div>
+    <% else %>
+      <div class="message-with-user flex-grow-1">
+        <p><%= message.content %></p>
+        <h6>by <%= message.user.name %></h6>
+      </div>
     <% end %>
-    <div class="message-with-user flex-grow-1">
-      <p><%= message.content %></p>
-      <h6>by <%= message.user.name %></h6>
-    </div>
       <a><%= message.created_at.strftime("%l:%M%p") %></a>
   </div>
 </div>

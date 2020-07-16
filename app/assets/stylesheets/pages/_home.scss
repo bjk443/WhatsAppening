@@ -15,11 +15,17 @@
     overflow-x: auto !important;
   }
 }
+.padding-bottom {
+  padding-bottom: 40px !important;
+}
 .container_orange {
   padding: 25px 10px 20px 10px;
   background-color: #ff7700;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
+  .margin-top {
+    margin-top: 50px;
+  }
 
   h2 {
     font-weight: 700;
@@ -130,13 +136,21 @@ input.empty {
   color: #ff7700 !important;
 }
 
-[aria-hidden="true"] {
-  color: white;
+.back-btn {
+  .btn {
+    color: white !important;
+  }
 }
 
 .my-listing-section {
   #map {
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.stars {
+  .fa {
+    color: white;
   }
 }
