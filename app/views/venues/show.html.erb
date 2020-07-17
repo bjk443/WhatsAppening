@@ -9,7 +9,8 @@
     </div>
     <% end %>
     <h1><%= @venue.name %></h1>
-    <p><%= @venue.description%></p>
+    <p><%= @venue.events.last.name%></p>
+    <!-- <p>< LIVE NOW IN CONCERT ></p> -->
 
     <div class="card-rating-display">
     <% full_stars = @venue.events.last.average_rating %>
