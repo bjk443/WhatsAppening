@@ -19,7 +19,6 @@ user_1 = User.create(name: "john", email: "john@john.com", password: "123456", r
 user_2 = User.create(name: "omar", email: "omar@omar.com", password: "123456", role: "admin")
 user_3 = User.create(name: "chris", email: "chris@chris.com", password: "123456", role: "admin")
 user_4 = User.create(name: "alex", email: "alex@alex.com", password: "123456", role: "normal_user")
-user_5 = User.create(name: "alvin", email: "alvin@alvin.com", password: "123456", role: "normal_user")
 user_6 = User.create(name: "claire", email: "claire@claire.com", password: "123456", role: "normal_user")
 user_7 = User.create(name: "harold", email: "harold@harold.com", password: "123456", role: "normal_user")
 user_8 = User.create(name: "julien", email: "julien@julien.com", password: "123456", role: "normal_user")
