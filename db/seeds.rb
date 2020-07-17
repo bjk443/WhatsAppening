@@ -16,9 +16,13 @@ Message.destroy_all
 
 puts "Creating users..."
 user_1 = User.create(name: "john", email: "john@john.com", password: "123456", role: "admin")
-user_2 = User.create(name: "omar", email: "omar@omar.com", password: "123456", role: "admin" )
-user_3 = User.create(name: "chris", email: "chris@chris.com", password: "123456", role: "admin" )
-
+user_2 = User.create(name: "omar", email: "omar@omar.com", password: "123456", role: "admin")
+user_3 = User.create(name: "chris", email: "chris@chris.com", password: "123456", role: "admin")
+user_4 = User.create(name: "alex", email: "alex@alex.com", password: "123456", role: "normal_user")
+user_5 = User.create(name: "alvin", email: "alvin@alvin.com", password: "123456", role: "normal_user")
+user_6 = User.create(name: "claire", email: "claire@claire.com", password: "123456", role: "normal_user")
+user_7 = User.create(name: "harold", email: "harold@harold.com", password: "123456", role: "normal_user")
+user_8 = User.create(name: "julien", email: "julien@julien.com", password: "123456", role: "normal_user")
 
 puts "Creating venues..."
 venue_1 = Venue.create!(
@@ -127,7 +131,7 @@ event_1 = Event.create!(
   artist: "Jay-Z",
   genre: "Hip Hop",
   venue: venue_1,
-  playlist_id: "5858385902"
+  playlist_id: "1677006641"
 )
 
 event_2 = Event.create!(
@@ -198,7 +202,7 @@ event_10 = Event.create!(
   name: "No event Today",
   artist: "Vivaldi",
   genre: "Classic",
-  venue: venue_9,
+  venue: venue_10,
   playlist_id: "7393760844"
 )
 
@@ -206,7 +210,7 @@ event_11 = Event.create!(
   name: "No event tonight",
   artist: "Vivaldi",
   genre: "Classic",
-  venue: venue_9,
+  venue: venue_11,
   playlist_id: "7393760844"
 )
 
@@ -220,6 +224,7 @@ Rating.create!(
   event: event_1,
   user: user_1
 )
+
 Rating.create!(
   stars: 5,
   comment: "Did you hear that DJ?",
@@ -228,6 +233,7 @@ Rating.create!(
   event: event_1,
   user: user_2
 )
+
 Rating.create!(
   stars: 3,
   comment: "A night to remember!",
@@ -236,6 +242,7 @@ Rating.create!(
   event: event_2,
   user: user_3
 )
+
 Rating.create!(
   stars: 1,
   comment: "What a waste of my time!",
@@ -244,6 +251,7 @@ Rating.create!(
   event: event_2,
   user: user_1
 )
+
 Rating.create!(
   stars: 2,
   comment: "A night to remember!",
@@ -252,6 +260,7 @@ Rating.create!(
   event: event_3,
   user: user_2
 )
+
 Rating.create!(
   stars: 0,
   comment: "What a waste of my time!",
@@ -285,3 +294,7 @@ Chatroom.create(venue_id: venue_4.id)
 Chatroom.create(venue_id: venue_5.id)
 Chatroom.create(venue_id: venue_6.id)
 Chatroom.create(venue_id: venue_7.id)
+Chatroom.create(venue_id: venue_8.id)
+Chatroom.create(venue_id: venue_9.id)
+Chatroom.create(venue_id: venue_10.id)
+Chatroom.create(venue_id: venue_11.id)
