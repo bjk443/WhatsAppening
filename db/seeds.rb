@@ -78,7 +78,7 @@ venue_6 = Venue.create!(
 venue_7 = Venue.create!(
   name: "Starbucks",
   address: "541, Orchard Road, Singapore 238881",
-  description: "Premium roaster and retailer of specialty coffee",
+  description: "Premium coffee",
   capacity: 20,
   user: user_3,
   category: "cafe"
@@ -86,42 +86,43 @@ venue_7 = Venue.create!(
 
 puts "Creating events..."
 event_1 = Event.create!(
-  name: "The Greatest Show on Earth",
-  artist: "Daft Punk",
+  name: "<No special event>",
+  artist: "Jay-Z",
+  genre: "Hip Hop",
+  venue: venue_1,
+  playlist_id: "5858385902"
+)
+
+event_2 = Event.create!(
+  name: "<No special event>",
+  artist: "Beyonce",
+  genre: "Pop",
+  venue: venue_2,
+  playlist_id: "5126399844"
+)
+
+event_3 = Event.create!(
+  name: "<No special event>",
+  artist: "Eminem",
+  genre: "Rap",
+  venue: venue_3,
+  playlist_id: "607646115"
+)
+
+event_4 = Event.create!(
+  name: "LIVE NOW IN CONCERT",
+  artist: "Black Eyed Peas",
   genre: "House",
   venue: venue_4,
   playlist_id: "2098157264"
 )
 
-event_2 = Event.create!(
-  name: "The end of days",
-  artist: "Beyonce",
-  genre: "Pop",
-  venue: venue_2,
-  playlist_id: "1677006641"
-)
-
-event_3 = Event.create!(
-  name: "200m run",
-  artist: "Jay-Z",
-  genre: "Hip Hop",
-  venue: venue_1,
-  playlist_id: "1677006641"
-)
-
-event_4 = Event.create!(
-  name: "Halloween bar crawl",
-  artist: "Eminem",
-  genre: "Rap",
-  venue: venue_3,
-  playlist_id: "3110422662"
-)
 event_5 = Event.create!(
   name: "Booze cruise",
   artist: "U2",
   genre: "Rock",
   venue: venue_5,
-  playlist_id: "3110422662"
+  playlist_id: "7393760844"
 )
 
 event_6 = Event.create!(
@@ -129,7 +130,7 @@ event_6 = Event.create!(
   artist: "Vivaldi",
   genre: "Classic",
   venue: venue_6,
-  playlist_id: "3110422662"
+  playlist_id: "1221168973"
 )
 
 event_7 = Event.create!(
@@ -137,7 +138,7 @@ event_7 = Event.create!(
   artist: "Vivaldi",
   genre: "Classic",
   venue: venue_7,
-  playlist_id: "3110422662"
+  playlist_id: "1884669742"
 )
 
 puts "Creating ratings..."

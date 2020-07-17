@@ -9,7 +9,8 @@
     </div>
     <% end %>
     <h1><%= @venue.name %></h1>
-    <p><%= @venue.description%></p>
+    <p><%= @venue.events.last.name%></p>
+    <!-- <p>< LIVE NOW IN CONCERT ></p> -->
 
     <div class="card-rating-display">
     <% full_stars = @venue.events.last.average_rating %>
@@ -27,7 +28,7 @@
     <div class="card-product mt-3">
       <div id="album" style="background-image: url(<%= @playlist_data["tracks"]["data"][2]['album']['cover_medium']%>)">
         <audio id="mySong">
-          <source src="https://cdns-preview-d.dzcdn.net/stream/c-deda7fa9316d9e9e880d2c6207e92260-8.mp3" type="audio/mpeg">
+          <source src="<%= @playlist_data["tracks"]["data"][2]["preview"]%>" type="audio/mpeg">
         </audio>
         <i class="fa fa-play" aria-hidden="true"></i>
         <i class="fa fa-pause" style="display: none" aria-hidden="true"></i>

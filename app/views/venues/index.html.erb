@@ -45,7 +45,8 @@
         <div class="event-card" style= "background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url(<%=cl_image_path venue.photos[0].key, height: 350, crop: :fit%>)">
           <div class="card-trip-infos">
             <h2><%= link_to venue.name, venue_path(venue), data: { turbolinks: false} %></h2>
-            <h6><%= venue.events.last.name %></h6>
+            <h6><%= venue.description %></h6>
+            <!-- <h6><%= venue.events.last.name %></h6> -->
             <div class="stars-card d-flex align-items-center">
               <div class="stars">
                 <% full_stars = venue.events.last.average_rating %>
@@ -97,7 +98,8 @@
         <div class="event-card" style= "background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url(<%=cl_image_path venue.photos[0].key, height: 350, crop: :fit%>)">
           <div class="card-trip-infos">
             <h2><%= link_to venue.name, venue_path(venue), data: { turbolinks: false} %></h2>
-            <h6><%= venue.events.last.name %></h6>
+            <h6><%= venue.description %></h6>
+            <!-- <h6><%= venue.events.last.name %></h6> -->
             <div class="stars-card d-flex align-items-center">
               <div class="stars">
                 <% full_stars = venue.events.last.average_rating %>
@@ -171,7 +173,8 @@
         </div>
         <div class="card-info">
           <h2><%= link_to venue.name, venue_path(venue), data: { turbolinks: false} %></h2>
-          <h6><%= venue.events.last.name %></h6>
+          <h6><%= venue.description %></h6>
+          <!-- <h6><%= venue.events.last.name %></h6> -->
           <div class="capacity align-items-center">
             <!-- <p> Event Rating: </p> -->
             <% full_stars = venue.events.last.average_rating %>
@@ -242,7 +245,8 @@
         </div>
         <div class="card-info">
           <h2><%= link_to venue.name, venue_path(venue) %></h2>
-          <h6><%= venue.events.last.name %></h6>
+          <h6><%= venue.description %></h6>
+          <!-- <h6><%= venue.events.last.name %></h6> -->
           <div class="capacity align-items-center">
             <!-- <p> Event Rating: </p> -->
             <% full_stars = venue.events.last.average_rating %>
