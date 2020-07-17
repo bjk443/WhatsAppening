@@ -33,7 +33,7 @@ venue_1 = Venue.create!(
 venue_2 = Venue.create!(
   name: "The Drunken Poet",
   address: "400, Orchard Road, Singapore 238875",
-  description: "Arguably the best Irish Pub in Singapore",
+  description: "The best Irish Pub in Singapore",
   capacity: 45,
   user: user_2,
   category: "bar"
@@ -60,7 +60,7 @@ venue_4 = Venue.create!(
 venue_5 = Venue.create!(
   name: "TCC Cafe",
   address: "360, Orchard Road, Singapore 238869",
-  description: "Leading chain of art boutique caffès",
+  description: "Leading chain of caffes",
   capacity: 30,
   user: user_2,
   category: "cafe"
@@ -69,7 +69,7 @@ venue_5 = Venue.create!(
 venue_6 = Venue.create!(
   name: "Cafe de Muse",
   address: "350, Orchard Road, Singapore 238868",
-  description: "Cosy café that will tease your palate",
+  description: "Great coffe shop",
   capacity: 25,
   user: user_3,
   category: "cafe"
@@ -84,9 +84,46 @@ venue_7 = Venue.create!(
   category: "cafe"
 )
 
+venue_8 = Venue.create!(
+  name: "Cafe Paris",
+  address: "320, Orchard Road, Singapore 238865",
+  description: "Delicious coffee",
+  capacity: 20,
+  user: user_3,
+  category: "cafe"
+)
+
+venue_9 = Venue.create!(
+  name: "Cafe del Mar",
+  address: "400, Orchard Road, Singapore 238875",
+  description: "Time to relax",
+  capacity: 20,
+  user: user_3,
+  category: "cafe"
+)
+
+venue_10 = Venue.create!(
+  name: "Heroes",
+  address: "190 Orchard Blvd, Singapore 248646",
+  description: "Temporarily closed",
+  capacity: 150,
+  user: user_1,
+  category: "bar"
+)
+
+venue_11 = Venue.create!(
+  name: "Bar Bar",
+  address: "10 Scotts Rd, Singapore 228211",
+  description: "Temporarily closed",
+  capacity: 30,
+  user: user_2,
+  category: "bar"
+)
+
 puts "Creating events..."
+
 event_1 = Event.create!(
-  name: "<No special event>",
+  name: "No special event",
   artist: "Jay-Z",
   genre: "Hip Hop",
   venue: venue_1,
@@ -94,7 +131,7 @@ event_1 = Event.create!(
 )
 
 event_2 = Event.create!(
-  name: "<No special event>",
+  name: "No special event",
   artist: "Beyonce",
   genre: "Pop",
   venue: venue_2,
@@ -102,7 +139,7 @@ event_2 = Event.create!(
 )
 
 event_3 = Event.create!(
-  name: "<No special event>",
+  name: "No special event",
   artist: "Eminem",
   genre: "Rap",
   venue: venue_3,
@@ -126,7 +163,7 @@ event_5 = Event.create!(
 )
 
 event_6 = Event.create!(
-  name: "Full Moon Party",
+  name: "No event tonight",
   artist: "Vivaldi",
   genre: "Classic",
   venue: venue_6,
@@ -134,14 +171,47 @@ event_6 = Event.create!(
 )
 
 event_7 = Event.create!(
-  name: "Full Moon Party",
+  name: "No event now",
   artist: "Vivaldi",
   genre: "Classic",
   venue: venue_7,
   playlist_id: "1884669742"
 )
 
+event_8 = Event.create!(
+  name: "Enjoy and relax",
+  artist: "Vivaldi",
+  genre: "Classic",
+  venue: venue_8,
+  playlist_id: "1884669742"
+)
+
+event_9 = Event.create!(
+  name: "Enjoy and relax",
+  artist: "Vivaldi",
+  genre: "Classic",
+  venue: venue_9,
+  playlist_id: "1884669742"
+)
+
+event_10 = Event.create!(
+  name: "No event Today",
+  artist: "Vivaldi",
+  genre: "Classic",
+  venue: venue_9,
+  playlist_id: "7393760844"
+)
+
+event_11 = Event.create!(
+  name: "No event tonight",
+  artist: "Vivaldi",
+  genre: "Classic",
+  venue: venue_9,
+  playlist_id: "7393760844"
+)
+
 puts "Creating ratings..."
+
 Rating.create!(
   stars: 3,
   comment: "Did you hear that DJ?",
