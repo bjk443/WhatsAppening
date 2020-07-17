@@ -11,7 +11,7 @@ const liveBtn = () => {
       const timePast = (now - hiddenAt.hiddenAt) / 60000;
 
       // console.log(timePast);
-      if (timePast > 0.3) {
+      if (timePast > 100) {
         btn.classList.remove("display_none");
         message_area.classList.add("display_none");
         btn.addEventListener("click", () => {
